@@ -31,8 +31,17 @@ const percentCalculator = {
 }
   
 
-
-
+// pseudo 움직임 주는 함수 묶음 객체
+  function zoom(element,direction,startScale,finshScale){
+    element.animate([
+      {transform :`scale(${startScale})`},
+      {transform :`scale(${finshScale})`}
+    ],{
+      duration: 2000,
+      fill:'forwards',
+      direction:direction
+    })
+  }
 
 
 
@@ -108,7 +117,7 @@ window.onload = function(){
   
   req.addEventListener("load",function(){
     jsonObj = JSON.parse(req.responseText);
-    console.log(jsonObj.intro)
+    console.dir(root2)
     controlRoot1(true); //pseudo root1 제어하는 함수
     // pseudo 동적으로 요소를 생성시킴 
     // ! 움직이지 말것 먼저 생성이 되어야 getting이 가능해짐
@@ -177,8 +186,9 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
           console.log("zero에서 I로 이동합니다")
           currentPage.splice(0,2,false,true)
-    
-          
+          console.dir(textI)
+          console.log(leafI)
+          zoom(textI,"normal",1,10)
           
           
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
@@ -246,7 +256,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         } else if (event.wheelDelta > 0 && currentPage[2] === true) {
           console.log("My에서 I로 이동합니다")
           currentPage.splice(1, 2,true,false)
-    
+          zoom(textI,"reverse",1,10)
     
     
     

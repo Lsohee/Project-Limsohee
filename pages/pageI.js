@@ -8,7 +8,7 @@ function textIFunc(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"textI"
+    "id":"textI",
   }
   return textIvalues
 }

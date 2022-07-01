@@ -13,6 +13,7 @@ function attributeNode(values){
   id = '${values.id}'
   `
 }
+// scale = ${values.scale};
 
 function createDiv(textNode,attributeNode){
   return `
