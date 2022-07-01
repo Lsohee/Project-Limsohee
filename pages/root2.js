@@ -8,7 +8,7 @@ export default function controlRoot2(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":""
+    "id":"textIntro"
   }
   return introValues
 }

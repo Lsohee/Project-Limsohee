@@ -1,4 +1,4 @@
-export default function funcI(leftValue,topValue){
+function textIFunc(leftValue,topValue){
   let textIvalues = {
     "width" :"fit-contant",
     "height": "fit-contant",
@@ -7,13 +7,24 @@ export default function funcI(leftValue,topValue){
     "left":leftValue,
     "top":topValue,
     "color":"black",
-    "src": "none"
+    "src": "none",
+    "id":"textI"
   }
   return textIvalues
 }
-// if(zoomIn){
-//   console.log("zoom in to page I")
-//   root2.innerHTML = "<div style='color:red;'>hello my friends</div>"
-// } else if(zoomOut){
-//   console.log("zooom out from page I")
-// }
+function leafIFunc(leftValue,topValue){
+  let leafIValues = {
+    "width" :"100px",
+    "height": "100px",
+    "backgroundColor":"white",
+    "position":"absolute",
+    "left":leftValue,
+    "top":topValue,
+    "color":"none",
+    "src": "none",
+    "id":"leafI"
+  }
+  return leafIValues
+}
+
+export {textIFunc,leafIFunc}

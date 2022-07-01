@@ -2,20 +2,19 @@
 const container = document.getElementById("container")
 const root1 = document.getElementById("root1")
 const root2 = document.getElementById("root2")
-console.dir(root2)
 
 
 // pseudo 파일 import
 import controlRoot1 from "./pages/root1.js" // pseudo  
 import controlRoot2 from "./pages/root2.js"
 import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
-import funcI from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
 import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
-
-
-
-
-
+import {textIFunc, leafIFunc} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
+import {mainBubbleMyFunc, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
+  projectsBubbleMyFunc} from "./pages/pageMy.js" //pseudo My 페이지 요소들 제어
+import { needFishMefunc,happyFishMeFunc } from "./pages/pageMe.js"
+import { textMyself1Func } from "./pages/pageMyself1.js";
+import { textMyself2Func, bottomMyself2Func } from "./pages/pageMyself2.js"
 
 
 
@@ -102,7 +101,7 @@ window.onresize = (leftValuePercent,topValuePercent,currentValue)=>{ // memo 이
 
 
 
-// pseudo JSON파일 통신 , load 됐을 때 작동하는 이벤트 함수
+// pseudo JSON파일 통신 , load 됐을 때 작동하는 이벤트 함수 
 window.onload = function(){
   let req = new XMLHttpRequest();
   let jsonObj
@@ -111,29 +110,70 @@ window.onload = function(){
     jsonObj = JSON.parse(req.responseText);
     console.log(jsonObj.intro)
     controlRoot1(true); //pseudo root1 제어하는 함수
+    // pseudo 동적으로 요소를 생성시킴 
+    // ! 움직이지 말것 먼저 생성이 되어야 getting이 가능해짐
+    root2.innerHTML = `
+    ${createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))}
     
+    ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))}
+    
+    ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(40),percentCalculator.top(30))))}
+    
+    ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(40),percentCalculator.top(20))))}
+    
+    ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
+    
+    ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
+    
+    ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
+    
+    ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
+    
+    ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
+    
+    ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
+    
+    ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
+
+    ${createDiv(jsonObj.textMyself1,attributeNode(textMyself1Func(percentCalculator.left(20),percentCalculator.top(66))))}
+
+    ${createDiv(jsonObj.textMyself2,attributeNode(textMyself2Func(percentCalculator.left(57),percentCalculator.top(17))))}
+
+    ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
+    `
+
 
 
 // pseudo wheel에 반응하는 switch 함수
 let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수를 제어하기 위한 핸들러 배열
+
+
+
+
     function zoomSwitch(){
-      root2.innerHTML = `
-      ${
-        createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))
-      }
-      ${
-        createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))
-      }
-      ${
-        createDiv(jsonObj.contantI,attributeNode(funcI(percentCalculator.left(40),percentCalculator.top(30))))
-      }
-      `
+      
       root2.addEventListener("wheel", (event) => {
+        const textIntro = document.getElementById("textIntro")
+        const textI = document.getElementById("textI");
+        const leafI = document.getElementById("leafI");
+        const mainBubbleMy = document.getElementById("mainBubbleMy");
+        const mottoBubbleMy = document.getElementById("mottoBubbleMy");
+        const prosAndConsBubbleMy = document.getElementById("prosAndConsBubbleMy");
+        const interestsBubbleMy = document.getElementById("interestsBubbleMy");
+        const projectsBubbleMy = document.getElementById("projectsBubbleMy");
+        const needFishMe = document.getElementById("needFishMe")
+        const happyFishMe = document.getElementById("happyFishMe")
+        const textMyself1 = document.getElementById("textMyself1")
+        const textMyself2 = document.getElementById("textMyself2")
+        const bottomMyself2 = document.getElementById("bottomMyself2")
+
+        
+        
+        
+        
+        
         if (event.wheelDelta > 0 && currentPage[0] === true) {
           console.log("움직이지 않습니다")
-          
-          
-          
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
           console.log("zero에서 I로 이동합니다")
           currentPage.splice(0,2,false,true)
@@ -236,5 +276,3 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
     req.open("GET","contents.JSON",true);
     req.send(null);
   }
-
-
