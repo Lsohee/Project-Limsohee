@@ -1,5 +1,5 @@
 import funcI from "./pages/pageI.js"
-import funcMy from "./pages/pageMy,js"
+import funcMy from "./pages/pageMy.js"
 import funcMe from "./pages/pageMe.js"
 import funcMyself1 from "./pages/pageMyself1.js"
 import funcMyself2 from "./pages/pageMyself2.js"
@@ -14,9 +14,8 @@ export default function zoomSwitch(contantI,contantMy,contantMe,contantMyself1,c
     if (event.wheelDelta > 0 && currentPage[0] === true) {
       console.log("움직이지 않습니다")
       
-
-
-
+      
+      
     } else if (event.wheelDelta < 0 && currentPage[0] === true) {
       console.log("zero에서 I로 이동합니다")
       currentPage.splice(0,2,false,true)

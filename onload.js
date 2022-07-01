@@ -1,17 +1,20 @@
-import controlRoot1 from "./root1.js"
+import controlRoot2 from "./pages/root2.js"
+import controlRoot1 from "./pages/root1.js"
 import zoomSwitch from "./switch.js"
+// let controlValueRoot2Arr = 
 
 
-  window.onload = function(){
-    var req = new XMLHttpRequest();
-    var jsonObj
+window.onload = function(){
+  var req = new XMLHttpRequest();
+  var jsonObj
+  
+  req.addEventListener("load",function(){
+    jsonObj = JSON.parse(req.responseText);
+    console.log(jsonObj.intro)
     
-    req.addEventListener("load",function(){
-      jsonObj = JSON.parse(req.responseText);
-      // console.log(jsonObj)
-      console.log("loading complet")
-
-
+    controlRoot1(true)
+    controlRoot2([100,100,jsonObj.intro])
+    
 
 
       
@@ -21,13 +24,21 @@ import zoomSwitch from "./switch.js"
       pseudo controlRoot1()
       */
 
+      window.addEventListener("wheel", function () {
+        let scrollHeight = this.window.scrollY;
+        let windowHeight = this.window.innerHeight;
+        let docTotalHeight = this.document.body.offsetHeight;
+        if (scrollHeight + windowHeight > docTotalHeight) {
+          controlRoot1(false)
+          zoomSwitch()
+        }
+      })
+      
 
 
 
-
-      controlRoot1()
     },false);
-    req.open("GET","contants.JSON",true);
+    req.open("GET","contents.JSON",true);
     req.send(null);
   }
 
