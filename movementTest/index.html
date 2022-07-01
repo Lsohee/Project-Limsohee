@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container" style="width:100px; height:100px; background-color: aqua;"></div>
+  <script>
+    const container = document.getElementById("container");
+    // console.log(container)
+    
+    container.addEventListener("click",function(){
+      container.innerHTML = "<div id='root'>hello</div>"
+      const root = document.getElementById("root")
+      return root
+    })
+    
+    console.log(root)
+    
+    
+     
+    //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
+    //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
+
+  </script>
+</body>
+</html>

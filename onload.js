@@ -2,7 +2,7 @@
 const container = document.getElementById("container")
 const root1 = document.getElementById("root1")
 const root2 = document.getElementById("root2")
-
+console.dir(root2)
 
 
 // pseudo 파일 import
