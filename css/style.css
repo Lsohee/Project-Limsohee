@@ -6,11 +6,11 @@
 #root1 {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(179, 209, 199);
+  background-color: #0A89A6;
 }
 
 #root2 {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(166, 173, 170);
+  background-color: rgba(10, 137, 166, 0);
 }/*# sourceMappingURL=style.css.map */

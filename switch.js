@@ -3,12 +3,13 @@ import funcMy from "./pages/pageMy.js"
 import funcMe from "./pages/pageMe.js"
 import funcMyself1 from "./pages/pageMyself1.js"
 import funcMyself2 from "./pages/pageMyself2.js"
+import watercolor from "./waterColor.js"
 
 let currentPage = [true,false,false,false,false,false]
 
 export default function zoomSwitch(contantI,contantMy,contantMe,contantMyself1,contantMyself2){
   root2.addEventListener("wheel", (event) => {
-
+    watercolor()
     console.log(event)
     
     if (event.wheelDelta > 0 && currentPage[0] === true) {
