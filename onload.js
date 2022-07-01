@@ -1,19 +1,47 @@
+// pseudo html 요소 geting 
+const container = document.getElementById("container")
+const root1 = document.getElementById("root1")
+const root2 = document.getElementById("root2")
+
+
+
+// pseudo 파일 import
+import controlRoot1 from "./pages/root1.js" // pseudo  
 import controlRoot2 from "./pages/root2.js"
-import controlRoot1 from "./pages/root1.js"
-import zoomSwitch from "./switch.js"
-import watercolor from "./waterColor.js";
+import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
+import funcI from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
+import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
 
-function leftPositionCalculator(leftValuePercent){
-  let leftValue = window.innerWidth*leftValuePercent/100
-  return leftValue
+
+
+
+
+
+
+
+// pseudo 현재 화면크기의 비율을 계산해주는 계산함수 묶음
+const percentCalculator = {
+  left(leftValuePercent){
+    let leftValue = window.innerWidth*leftValuePercent/100
+    return leftValue
+  },
+  top(topValuePercent){
+    let topValue = window.innerHeight*topValuePercent/100 
+    return topValue
+  }
 }
-
-function topPostionCalculator(topValuePercent){
-  let topValue = window.innerHeight*topValuePercent/100 
-  return topValue
-}
+  
 
 
+
+
+
+
+
+
+
+
+// pseudo 브라우저의 크기가 변할때마다 현재 크기를 찍어주는 이벤트 함수
 /*
   pseudo 브라우저의 화면 크기가 변화하면 
   memo 이벤트 발생 함수
@@ -27,7 +55,6 @@ function topPostionCalculator(topValuePercent){
   pseudo left와 top의 px 값을 각각 뱉어내는 함수
   memo return 값
 */ 
-
 window.onresize = (leftValuePercent,topValuePercent,currentValue)=>{ // memo 이벤트 발생 함수, 매개 변수(input)
 
   let leftValue = window.innerWidth*leftValuePercent/100
@@ -68,7 +95,6 @@ window.onresize = (leftValuePercent,topValuePercent,currentValue)=>{ // memo 이
   
 }
 
-console.log(window.onresize(20,20,"top"))
 
 
 
@@ -76,50 +102,139 @@ console.log(window.onresize(20,20,"top"))
 
 
 
-
+// pseudo JSON파일 통신 , load 됐을 때 작동하는 이벤트 함수
 window.onload = function(){
-  var req = new XMLHttpRequest();
-  var jsonObj
+  let req = new XMLHttpRequest();
+  let jsonObj
   
   req.addEventListener("load",function(){
     jsonObj = JSON.parse(req.responseText);
     console.log(jsonObj.intro)
-    
-    controlRoot1(true)
-    
-    /*
-    pseudo controlRoot2 함수의 인자 : 
-    *intro 소개의 left
-    *intro 소개의 top
-    *intro 소개의 contentTexts
-    *root2의 innerHTML에 물배경 레이어 생성
-    */
-    controlRoot2([,jsonObj.intro,watercolor()])
+    controlRoot1(true); //pseudo root1 제어하는 함수
     
 
 
-      
-      /* 
-      pseudo 여기에 
-      pseudo zoomSwitch(contantI,contantMy,contantMe,contantMyself1,contantMyself2)
-      pseudo controlRoot1()
-      */
+// pseudo wheel에 반응하는 switch 함수
+let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수를 제어하기 위한 핸들러 배열
+    function zoomSwitch(){
+      root2.innerHTML = `
+      ${
+        createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))
+      }
+      ${
+        createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))
+      }
+      ${
+        createDiv(jsonObj.contantI,attributeNode(funcI(percentCalculator.left(40),percentCalculator.top(30))))
+      }
+      `
+      root2.addEventListener("wheel", (event) => {
+        if (event.wheelDelta > 0 && currentPage[0] === true) {
+          console.log("움직이지 않습니다")
+          
+          
+          
+        } else if (event.wheelDelta < 0 && currentPage[0] === true) {
+          console.log("zero에서 I로 이동합니다")
+          currentPage.splice(0,2,false,true)
+    
+          
+          
+          
+        } else if (event.wheelDelta < 0 && currentPage[1] === true) {
+          console.log("I에서 My로 이동합니다")
+          currentPage.splice(1,2,false,true)
+    
+    
+    
+    
+    
+        } else if (event.wheelDelta < 0 && currentPage[2] === true) {
+          console.log("My에서 Me로 이동합니다")
+          currentPage.splice(2,2,false,true)
+    
+    
+    
+    
+    
+        } else if (event.wheelDelta < 0 && currentPage[3] === true) {
+          console.log("Me에서 Myself로 이동합니다")
+          currentPage.splice(3,2,false,true)
+    
+          
+          
+          
+          
+        } else if (event.wheelDelta < 0 && currentPage[4] === true) {
+          console.log("최종입니다")
+          currentPage.splice(4,2,false,true)
+    
+    
+    
+    
+    
+        } else if (event.wheelDelta < 0 && currentPage[5] === true) {
+          console.log("움직이지 않습니다")
+          
+          
+          
+          
+          
+        } else if (event.wheelDelta > 0 && currentPage[5] === true) {
+          console.log("Myself2에서 Me로 이동합니다")
+          currentPage.splice(4, 2,true,false)
+    
+    
+    
+    
+    
+        } else if (event.wheelDelta > 0 && currentPage[4] === true) {
+          console.log("Myself1에서 Me로 이동합니다")
+          currentPage.splice(3, 2,true,false)
+    
+    
+    
+    
+    
+        } else if (event.wheelDelta > 0 && currentPage[3] === true) {
+          console.log("Me에서 My로 이동합니다")
+          currentPage.splice(2, 2,true,false)
+    
+    
+    
+    
+        } else if (event.wheelDelta > 0 && currentPage[2] === true) {
+          console.log("My에서 I로 이동합니다")
+          currentPage.splice(1, 2,true,false)
+    
+    
+    
+    
+        } else if (event.wheelDelta > 0 && currentPage[1] === true) {
+          console.log("I에서 zero로 이동합니다")
+          currentPage.splice(0, 2,true,false)
+        }
+      })
+        } 
+
+        
+        
+        
+        
+        
 
       window.addEventListener("wheel", function () {
         let scrollHeight = this.window.scrollY;
         let windowHeight = this.window.innerHeight;
         let docTotalHeight = this.document.body.offsetHeight;
         if (scrollHeight + windowHeight > docTotalHeight) {
-          controlRoot1(false)
+          controlRoot1(false) //pseudo root1 제거
           zoomSwitch()
         }
       })
-      
-
-
-
     },false);
     req.open("GET","contents.JSON",true);
     req.send(null);
   }
+
 
