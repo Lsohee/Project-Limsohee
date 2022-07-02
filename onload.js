@@ -18,37 +18,6 @@ import { textMyself2Func, bottomMyself2Func } from "./pages/pageMyself2.js"
 
 
 
-// pseudo 현재 화면크기의 비율을 계산해주는 계산함수 묶음
-const percentCalculator = {
-  left(leftValuePercent){
-    let leftValue = window.innerWidth*leftValuePercent/100
-    return leftValue
-  },
-  top(topValuePercent){
-    let topValue = window.innerHeight*topValuePercent/100 
-    return topValue
-  }
-}
-  
-
-// pseudo 움직임 주는 함수 묶음 객체
-  function zoom(element,direction,startScale,finshScale){
-    element.animate([
-      {transform :`scale(${startScale})`},
-      {transform :`scale(${finshScale})`}
-    ],{
-      duration: 2000,
-      fill:'forwards',
-      direction:direction
-    })
-  }
-
-
-
-
-
-
-
 // pseudo 브라우저의 크기가 변할때마다 현재 크기를 찍어주는 이벤트 함수
 /*
   pseudo 브라우저의 화면 크기가 변화하면 
@@ -103,10 +72,41 @@ window.onresize = (leftValuePercent,topValuePercent,currentValue)=>{ // memo 이
   
 }
 
+// pseudo 현재 화면크기의 비율을 계산해주는 계산함수 묶음
+const percentCalculator = {
+  left(leftValuePercent){
+    let leftValue = window.innerWidth*leftValuePercent/100
+    return leftValue
+  },
+  top(topValuePercent){
+    let topValue = window.innerHeight*topValuePercent/100 
+    return topValue
+  }
+}
+  
 
 
 
 
+
+
+
+
+
+
+
+
+// pseudo 움직임 주는 함수 묶음 객체
+  function zoom(element,direction,startScale,finshScale,startLeft,finshLeft){
+    element.animate([
+      {transform :`scale(${startScale})`,left:`${startLeft}%`},
+      {transform :`scale(${finshScale})`,left:`${finshLeft}%`}
+    ],{
+      duration: 3000,
+      fill:'forwards',
+      direction:direction
+    })
+  }
 
 
 
@@ -135,7 +135,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
       
       ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))}
       
-      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(0),percentCalculator.top(0))))}
+      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(20),percentCalculator.top(10))))}
       
       ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(40),percentCalculator.top(20))))}
       
@@ -188,7 +188,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           currentPage.splice(0,2,false,true)
           console.dir(textI)
           console.log(leafI)
-          zoom(textI,"normal",1,10)
+          zoom(textI,"normal",1,100,0,50)
           
           
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
@@ -256,7 +256,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         } else if (event.wheelDelta > 0 && currentPage[2] === true) {
           console.log("My에서 I로 이동합니다")
           currentPage.splice(1, 2,true,false)
-          zoom(textI,"reverse",1,10)
+          zoom(textI,"reverse",1,200,0,50)
     
     
     
