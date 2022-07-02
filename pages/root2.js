@@ -3,12 +3,12 @@ export default function controlRoot2(leftValue,topValue){
     "width" :"fit-contant",
     "height": "fit-contant",
     "backgroundColor":"none",
-    "position":"absolute",
+    "position":"relative",
     "left":leftValue,
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"textIntro"
+    "id":"textIntro",
   }
   return introValues
 }

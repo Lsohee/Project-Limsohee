@@ -8,7 +8,7 @@ function textMyself1Func(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"textMyself1"
+    "id":"textMyself1",
   }
   return textMyself1Values
 }

@@ -8,7 +8,7 @@ function mainBubbleMyFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"mainBubbleMy"
+    "id":"mainBubbleMy",
   }
   return mainBubbleMyValues
 }
@@ -22,7 +22,7 @@ function mottoBubbleMyFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"mottoBubbleMy"
+    "id":"mottoBubbleMy",
   }
   return mottoBubbleMyValues
 }
@@ -36,7 +36,7 @@ function prosAndConsBubbleMyFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"prosAndConsBubbleMy"
+    "id":"prosAndConsBubbleMy",
   }
   return prosAndConsBubbleMyValues
 }
@@ -50,7 +50,7 @@ function interestsBubbleMyFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"interestBubbleMy"
+    "id":"interestBubbleMy",
   }
   return interestsBubbleMyValues
 }
@@ -64,7 +64,7 @@ function projectsBubbleMyFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"projectsBubbleMy"
+    "id":"projectsBubbleMy",
   }
   return projectsBubbleMyValues
 }

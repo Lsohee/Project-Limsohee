@@ -121,36 +121,6 @@ window.onload = function(){
     controlRoot1(true); //pseudo root1 제어하는 함수
     // pseudo 동적으로 요소를 생성시킴 
     // ! 움직이지 말것 먼저 생성이 되어야 getting이 가능해짐
-    root2.innerHTML = `
-    ${createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))}
-    
-    ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))}
-    
-    ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(40),percentCalculator.top(30))))}
-    
-    ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(40),percentCalculator.top(20))))}
-    
-    ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
-    
-    ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
-    
-    ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
-    
-    ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
-    
-    ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
-    
-    ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
-    
-    ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
-
-    ${createDiv(jsonObj.textMyself1,attributeNode(textMyself1Func(percentCalculator.left(20),percentCalculator.top(66))))}
-
-    ${createDiv(jsonObj.textMyself2,attributeNode(textMyself2Func(percentCalculator.left(57),percentCalculator.top(17))))}
-
-    ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
-    `
-
 
 
 // pseudo wheel에 반응하는 switch 함수
@@ -160,7 +130,37 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
 
 
     function zoomSwitch(){
+      root2.innerHTML = `
+      ${createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))}
       
+      ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(20))))}
+      
+      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(0),percentCalculator.top(0))))}
+      
+      ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(40),percentCalculator.top(20))))}
+      
+      ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
+      
+      ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
+      
+      ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
+      
+      ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
+      
+      ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
+      
+      ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
+      
+      ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
+  
+      ${createDiv(jsonObj.textMyself1,attributeNode(textMyself1Func(percentCalculator.left(20),percentCalculator.top(66))))}
+  
+      ${createDiv(jsonObj.textMyself2,attributeNode(textMyself2Func(percentCalculator.left(57),percentCalculator.top(17))))}
+  
+      ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
+      `
+  
+  
       root2.addEventListener("wheel", (event) => {
         const textIntro = document.getElementById("textIntro")
         const textI = document.getElementById("textI");
@@ -176,7 +176,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         const textMyself2 = document.getElementById("textMyself2")
         const bottomMyself2 = document.getElementById("bottomMyself2")
 
-        
+        console.log(textI.outerHTML)
         
         
         

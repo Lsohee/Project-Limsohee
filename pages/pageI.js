@@ -22,7 +22,7 @@ function leafIFunc(leftValue,topValue){
     "top":topValue,
     "color":"none",
     "src": "none",
-    "id":"leafI"
+    "id":"leafI",
   }
   return leafIValues
 }

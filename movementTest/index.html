@@ -7,23 +7,19 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="container" style="width:100px; height:100px; background-color: aqua;"></div>
+  <div id="root2" style="width:100px; height:100px; position: relative; overflow: hidden;" >
+    <div style="width:fit-content; height:fit-content; position: absolute;">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolore iste vero earum consectetur, aut exercitationem enim minima quia magni inventore, reiciendis laborum error? Vitae at sed atque amet excepturi.
+    </div>
+  </div>
   <script>
-    const container = document.getElementById("container");
-    // console.log(container)
-    
-    container.addEventListener("click",function(){
-      container.innerHTML = "<div id='root'>hello</div>"
-      const root = document.getElementById("root")
-      return root
-    })
-    
-    console.log(root)
-    
-    
-     
     //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
     //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
+
+    
+    
+    //<!--memo 감추고 싶은 자식div이 position: absolute; 면 부모요소의 overflow:hidden;이 안먹히는것같다 -->
+    //<!--memo 감추고 싶은 자식 div이 position :absolute; 여도 부모요소의position:relative;면 overflow:hidden먹힘 -->
 
   </script>
 </body>

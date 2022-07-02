@@ -8,7 +8,7 @@ function textMyself2Func(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"textMyself2"
+    "id":"textMyself2",
   }
   return textMyself2Values
 }
@@ -23,7 +23,7 @@ function bottomMyself2Func(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"bottomMyself2"
+    "id":"bottomMyself2",
   }
   return bottomMyself2Values
 

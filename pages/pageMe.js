@@ -8,7 +8,7 @@ function needFishMefunc(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"needFishMe"
+    "id":"needFishMe",
   }
   return needFishMeValues
 }
@@ -22,7 +22,7 @@ function happyFishMeFunc(leftValue,topValue){
     "top":topValue,
     "color":"black",
     "src": "none",
-    "id":"happyFishMe"
+    "id":"happyFishMe",
   }
   return happyFishMeValues
 }
