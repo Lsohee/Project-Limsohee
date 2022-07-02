@@ -99,8 +99,8 @@ const percentCalculator = {
 // pseudo 움직임 주는 함수 묶음 객체
   function zoom(element,direction,startScale,finshScale,startLeft,finshLeft){
     element.animate([
-      {transform :`scale(${startScale})`,left:`${startLeft}%`},
-      {transform :`scale(${finshScale})`,left:`${finshLeft}%`}
+      {left:`${startLeft}%`,transform :`scale(${startScale})`},
+      {left:`${finshLeft}%`, transform :`scale(${finshScale})`}
     ],{
       duration: 3000,
       fill:'forwards',
@@ -139,27 +139,27 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
       
       ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(40),percentCalculator.top(20))))}
       
-      ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
-      
-      ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
-      
-      ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
-      
-      ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
-      
-      ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
-      
-      ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
-      
-      ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
-  
-      ${createDiv(jsonObj.textMyself1,attributeNode(textMyself1Func(percentCalculator.left(20),percentCalculator.top(66))))}
-  
-      ${createDiv(jsonObj.textMyself2,attributeNode(textMyself2Func(percentCalculator.left(57),percentCalculator.top(17))))}
-  
-      ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
+
       `
+      // ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
+      
+      // ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
+      
+      // ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
+      
+      // ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
+      
+      // ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
+      
+      // ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
+      
+      // ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
   
+      // ${createDiv(jsonObj.textMyself1,attributeNode(textMyself1Func(percentCalculator.left(20),percentCalculator.top(66))))}
+  
+      // ${createDiv(jsonObj.textMyself2,attributeNode(textMyself2Func(percentCalculator.left(57),percentCalculator.top(17))))}
+  
+      // ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
   
       root2.addEventListener("wheel", (event) => {
         const textIntro = document.getElementById("textIntro")
@@ -188,7 +188,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           currentPage.splice(0,2,false,true)
           console.dir(textI)
           console.log(leafI)
-          zoom(textI,"normal",1,100,0,50)
+          zoom(textI,"normal",1,10,10,100)
           
           
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
@@ -256,7 +256,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         } else if (event.wheelDelta > 0 && currentPage[2] === true) {
           console.log("My에서 I로 이동합니다")
           currentPage.splice(1, 2,true,false)
-          zoom(textI,"reverse",1,200,0,50)
+          zoom(textI,"reverse",1,10,10,100)
     
     
     

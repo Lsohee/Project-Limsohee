@@ -1,7 +1,7 @@
 function textIFunc(leftValue,topValue){
   let textIvalues = {
-    "width" :"fit-contant",
-    "height": "fit-contant",
+    "width" :"350px",
+    "height": "100px",
     "backgroundColor":"none",
     "position":"absolute",
     "left":leftValue,
