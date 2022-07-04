@@ -3,16 +3,20 @@
   padding: 0;
 }
 
+#container {
+  position: relative;
+  overflow: hidden;
+}
+
 #root1 {
   width: 100vw;
   height: 100vh;
-  background-color: #0A89A6;
+  background-color: #89CCDB;
 }
 
 #root2 {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  background-color: #0A89A6;
-}
-/*# sourceMappingURL=style.css.map */
+  background-color: #89CCDB;
+}/*# sourceMappingURL=style.css.map */

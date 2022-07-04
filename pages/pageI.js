@@ -27,4 +27,13 @@ function leafIFunc(leftValue,topValue){
   return leafIValues
 }
 
-export {textIFunc,leafIFunc}
+// pseudo 처음 textI 등장 값 
+let textIMovementValues = {
+  'startLeft':100,
+  'finshLeft':70,
+  "startTop" :30,
+  "finshTop" : 30,
+  "startScale":1,
+  "finshScale":1
+}
+export {textIFunc,leafIFunc,textIMovementValues}
