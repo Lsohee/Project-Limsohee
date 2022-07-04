@@ -1,7 +1,7 @@
 function mainBubbleMyFunc(leftValue,topValue){
   let mainBubbleMyValues = {
-    "width" :"100px",
-    "height": "100px",
+    "width" :"0px",
+    "height": "0px",
     "backgroundColor":"white",
     "position":"absolute",
     "left":leftValue,
@@ -12,6 +12,15 @@ function mainBubbleMyFunc(leftValue,topValue){
   }
   return mainBubbleMyValues
 }
+
+
+
+
+
+
+
+
+
 function mottoBubbleMyFunc(leftValue,topValue){
   let mottoBubbleMyValues = {
     "width" :"100px",

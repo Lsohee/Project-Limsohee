@@ -4,18 +4,31 @@ const root1 = document.getElementById("root1")
 const root2 = document.getElementById("root2")
 
 
+
+
+
+
+
+
+
 // pseudo 파일 import
 import controlRoot1 from "./pages/root1.js" // pseudo  
-import {controlRoot2,textIntroMovementValues} from "./pages/root2.js"
+import {moveingValues} from "./pages/root2.js"
 import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
 import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
-import { createImg, attributeNodeImg } from "./createImg.js"
-import {textIFunc, leafIFunc,leafIMovementValues,textIMovementValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
+import {createImg,attributeNodeImg} from "./createImg.js" //pseudo img 태그를 생성하는 틀
+import {leafIMoveingValues,textIMoveingValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
 import {mainBubbleMyFunc, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
   projectsBubbleMyFunc} from "./pages/pageMy.js" //pseudo My 페이지 요소들 제어
 import { needFishMefunc,happyFishMeFunc } from "./pages/pageMe.js"
 import { textMyself1Func } from "./pages/pageMyself1.js";
 import { textMyself2Func, bottomMyself2Func } from "./pages/pageMyself2.js"
+
+
+
+
+
+
 
 
 
@@ -73,6 +86,13 @@ window.onresize = (leftValuePercent,topValuePercent,currentValue)=>{ // memo 이
   
 }
 
+
+
+
+
+
+
+
 // pseudo 현재 화면크기의 비율을 계산해주는 계산함수 묶음
 const percentCalculator = {
   left(leftValuePercent){
@@ -96,23 +116,29 @@ const percentCalculator = {
 
 
 
-
 // pseudo 움직임 주는 함수 묶음 객체
-  function zoom(element,direction,movementValues){
-    element.animate([
+  function zoom(element,direction,movementValues,resolve){
+    let make = element.animate([
       //여기의 left는 화면 비율
       {left:`${movementValues.startLeft}%`,top:`${movementValues.startTop}%`,transform :`scale(${movementValues.startScale})`},
-      {left:`${movementValues.finshLeft}%`,top:`${movementValues.finshTop}%`,transform :`scale(${movementValues.finshScale})`}
+      {left:`${movementValues.finishLeft}%`,top:`${movementValues.finishTop}%`,transform :`scale(${movementValues.finishScale})`}
     ],{
       duration: 2300,
       fill:'forwards',
       direction:direction
     })
+    make.finished.then(()=>{ //pseudo 애니메이션 동기처리를 위해 promise를 반환하는 finish 프로퍼티 안 함수를 매배변수로 추가
+      resolve()
+    })
   } 
 
-
   
-
+  
+  
+  
+  
+  
+  
 
 
 // pseudo JSON파일 통신 , load 됐을 때 작동하는 이벤트 함수 
@@ -124,20 +150,56 @@ window.onload = function(){
     jsonObj = JSON.parse(req.responseText);
     console.dir(root2)
     controlRoot1(true); //pseudo root1 제어하는 함수
+
+
+
+
     // pseudo 동적으로 요소를 생성시킴 
     // ! 움직이지 말것 먼저 생성이 되어야 getting이 가능해짐
-
     root2.innerHTML = `
       ${createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))}
       
-      ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(100))))}
+      ${createDiv(jsonObj.intro,attributeNode(moveingValues.controlRoot2(percentCalculator.left(10),percentCalculator.top(100))))}
       
-      ${createImg("leaf",attributeNodeImg(leafIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
+      ${createImg("leaf",attributeNodeImg(leafIMoveingValues.leafIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
       
-      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(100),percentCalculator.top(40))))}
+      ${createDiv(jsonObj.textI,attributeNode(textIMoveingValues.textIFunc(percentCalculator.left(100),percentCalculator.top(40))))}
       
+      ${createDiv("fish1",attributeNode(mainBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(20))))}
+
       `
-    
+
+      
+      
+
+
+
+
+      // pseudo pageI의 주요 요소들 getting의 묶음
+      const pageI = {
+        textIntro : document.getElementById("textIntro"),
+        textI : document.getElementById("textI"),
+        leafI : document.getElementById("leafI")
+      }
+      
+      // pseudo pageMy의 주요 요소들 getting의 묶음
+      // memo 아직 요소들이 남음  
+      const pageMy = {
+        mainBubbleMy : document.getElementById("mainBubbleMy"),
+        mottoBubbleMy : document.getElementById("mottoBubbleMy"),
+        prosAndConsBubbleMy : document.getElementById("prosAndConsBubbleMy"),
+        interestsBubbleMy : document.getElementById("interestsBubbleMy"),
+        projectsBubbleMy : document.getElementById("projectsBubbleMy")
+      }
+
+      // pseudo pageMe의 주요 요소들 getting의 묶음 
+      // memo 아직 요소들이 남음 
+      const pageMe = {
+        needFishMe : document.getElementById("needFishMe"),
+        happyFishMe : document.getElementById("happyFishMe")
+      }
+
+
     
     
     
@@ -151,7 +213,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
 
 
     function zoomSwitch(){
-      
+
       // ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
       
       // ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
@@ -163,30 +225,25 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
       // ${createDiv("bottom",attributeNode(bottomMyself2Func(percentCalculator.left(88),percentCalculator.top(20))))}
   
       root2.addEventListener("wheel", (event) => {
-        const textIntro = document.getElementById("textIntro")
-        const textI = document.getElementById("textI");
-        const leafI = document.getElementById("leafI");
-        const mainBubbleMy = document.getElementById("mainBubbleMy");
-        const mottoBubbleMy = document.getElementById("mottoBubbleMy");
-        const prosAndConsBubbleMy = document.getElementById("prosAndConsBubbleMy");
-        const interestsBubbleMy = document.getElementById("interestsBubbleMy");
-        const projectsBubbleMy = document.getElementById("projectsBubbleMy");
-        const needFishMe = document.getElementById("needFishMe")
-        const happyFishMe = document.getElementById("happyFishMe")
+
+
+
+       
+        
+    
         const textMyself1 = document.getElementById("textMyself1")
         const textMyself2 = document.getElementById("textMyself2")
         const bottomMyself2 = document.getElementById("bottomMyself2")
 
         
-        
         if (event.wheelDelta > 0 && currentPage[0] === true) {
           console.log("움직이지 않습니다")
           
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
-          zoom(textIntro,"normal",textIntroMovementValues("I"))
-          zoom(textI,"normal",textIMovementValues("I"))
-          zoom(leafI,"normal",leafIMovementValues("I"))
-  
+          zoom(pageI.textIntro,"normal",moveingValues.I)
+          zoom(pageI.textI,"normal",textIMoveingValues.I)
+          zoom(pageI.leafI,"normal",leafIMoveingValues.I)
+          
           console.log("zero에서 I로 이동합니다")
           currentPage.splice(0,2,false,true)
           
@@ -195,21 +252,16 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           console.log("I에서 My로 이동합니다")
           currentPage.splice(1,2,false,true)
           
-          let makeWorkStepByStep = new Promise((resovle)=>{
-            zoom(textIntro,"normal",textIntroMovementValues("My"))
-            zoom(textI,"normal",textIMovementValues("My"))
-            zoom(leafI,"normal",leafIMovementValues("My"))
-            resovle("it's done")
-          })
-          
-          .then((value)=>{
-            console.log(value)
-          })
-          
-          makeWorkStepByStep()
-          
-          
-          
+            zoom(pageI.textIntro,"normal",moveingValues.My)
+            zoom(pageI.textI,"normal",textIMoveingValues.My)
+            zoom(pageI.leafI,"normal",leafIMoveingValues.My,()=>{
+              console.log(mainBubbleMyFunc())
+              // pseudo 여기서 다른 파일에서 가져온 각각의 객체의 값들을 재할당할 수 있으면 제어가 훨씬 편할 텐데 내가 잘못 써서 안되는 걸까 아님 원래 여기서의 재할당은 안되는 것일까?
+              // mainBubbleMyFunc().width = 100
+              console.log(mainBubbleMyFunc().width)
+              // mainBubbleMyFunc().height = "100px"
+            })
+            
           
           
           
@@ -297,9 +349,9 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           controlRoot1(false) //pseudo root1 제거
           zoomSwitch()
           // pseudo 연잎과 인트로 등장
-        zoom(textIntro,"normal",textIntroMovementValues("zero"))
-        zoom(textI,"normal",textIMovementValues("zero"))
-        zoom(leafI,"normal",leafIMovementValues("zero"))
+        zoom(pageI.textIntro,"normal",moveingValues.intro)
+        zoom(pageI.textI,"normal",textIMoveingValues.intro)
+        zoom(pageI.leafI,"normal",leafIMoveingValues.intro)
         }
       })
     },false);
