@@ -9,7 +9,8 @@ import controlRoot1 from "./pages/root1.js" // pseudo
 import {controlRoot2,textIntroMovementValues} from "./pages/root2.js"
 import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
 import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
-import {textIFunc, leafIFunc,textIMovementValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
+import { createImg, attributeNodeImg } from "./createImg.js"
+import {textIFunc, leafIFunc,leafIMovementValues,textIMovementValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
 import {mainBubbleMyFunc, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
   projectsBubbleMyFunc} from "./pages/pageMy.js" //pseudo My 페이지 요소들 제어
 import { needFishMefunc,happyFishMeFunc } from "./pages/pageMe.js"
@@ -103,7 +104,7 @@ const percentCalculator = {
       {left:`${movementValues.startLeft}%`,top:`${movementValues.startTop}%`,transform :`scale(${movementValues.startScale})`},
       {left:`${movementValues.finshLeft}%`,top:`${movementValues.finshTop}%`,transform :`scale(${movementValues.finshScale})`}
     ],{
-      duration: 3000,
+      duration: 2300,
       fill:'forwards',
       direction:direction
     })
@@ -131,9 +132,9 @@ window.onload = function(){
       
       ${createDiv(jsonObj.intro,attributeNode(controlRoot2(percentCalculator.left(10),percentCalculator.top(100))))}
       
-      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
+      ${createImg("leaf",attributeNodeImg(leafIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
       
-      ${createDiv("leaf",attributeNode(leafIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
+      ${createDiv(jsonObj.textI,attributeNode(textIFunc(percentCalculator.left(100),percentCalculator.top(40))))}
       
       `
     
@@ -192,11 +193,17 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           console.log("움직이지 않습니다")
           
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
+          zoom(textIntro,"normal",textIntroMovementValues("I"))
+          zoom(textI,"normal",textIMovementValues("I"))
+          zoom(leafI,"normal",leafIMovementValues("I"))
+  
           console.log("zero에서 I로 이동합니다")
           currentPage.splice(0,2,false,true)
           
           
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
+          zoom(textI,"normal",textIMovementValues("My"))
+          zoom(leafI,"normal",leafIMovementValues("My"))
           console.log("I에서 My로 이동합니다")
           currentPage.splice(1,2,false,true)
     
@@ -286,9 +293,9 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           controlRoot1(false) //pseudo root1 제거
           zoomSwitch()
           // pseudo 연잎과 인트로 등장
-        zoom(textIntro,"normal",textIntroMovementValues)
-        zoom(textI,"normal",textIMovementValues)
-        zoom(leafI,"normal",textIMovementValues)
+        zoom(textIntro,"normal",textIntroMovementValues("zero"))
+        zoom(textI,"normal",textIMovementValues("zero"))
+        zoom(leafI,"normal",leafIMovementValues("zero"))
         }
       })
     },false);
