@@ -24,7 +24,7 @@ function textIntroMovementValues(currentPage){
     "startScale":1,
     "finshScale":1
   }
-  let movementValues = {
+  let movementIValues = {
     'startLeft':10,
     'finshLeft':-43,
     "startTop" :30,
@@ -32,11 +32,20 @@ function textIntroMovementValues(currentPage){
     "startScale":1,
     "finshScale":2
   }
-  
+  let movementMyValues = {
+    'startLeft':-43,
+    'finshLeft':-130,
+    "startTop" :30,
+    "finshTop" : 30,
+    "startScale":2,
+    "finshScale":4
+  }
   if(currentPage === "zero"){
     return values
   } else if(currentPage === "I"){
-    return movementValues
+    return movementIValues
+  }else if (currentPage === "My"){
+    return movementMyValues
   }
 }
 export {controlRoot2,textIntroMovementValues}

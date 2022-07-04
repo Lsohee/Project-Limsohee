@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <div id="root2" style="width:100px; height:100px; position: relative; overflow: hidden;" >
+  <div id="root2" style="width:fit-content; height:fit-content; ">
     <div style="width:fit-content; height:fit-content; position: absolute;">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolore iste vero earum consectetur, aut exercitationem enim minima quia magni inventore, reiciendis laborum error? Vitae at sed atque amet excepturi.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolore iste vero earum consectetur, aut
+      exercitationem enim minima quia magni inventore, reiciendis laborum error? Vitae at sed atque amet excepturi.
     </div>
   </div>
   <script>
+    const root2 = document.getElementById("root2")
+    const div = root2.querySelector("div")
     //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
     //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
 
-    
-    
     //<!--memo 감추고 싶은 자식div이 position: absolute; 면 부모요소의 overflow:hidden;이 안먹히는것같다 -->
     //<!--memo 감추고 싶은 자식 div이 position :absolute; 여도 부모요소의position:relative;면 overflow:hidden먹힘 -->
 
+
+    // const promise1 = new Promise((resolve)=>{
+    //   setTimeout(()=>{
+    //     console.log("it's start")
+    //     resolve("it's do")
+    //   },2000)
+    // })
+    //  promise1.then((value)=>{
+    //   setTimeout(()=>{
+    //     console.log(value)
+    //   },2000)
+    //  })
+
+
+
+
+
+
+
+
+    div.addEventListener("click", function() {
+      let move = div.animate([{
+          transform: "scale(1)"
+        },
+        {
+          transform: "scale(2)"
+        }
+      ], {
+        duration: 2300,
+        fill: 'forwards',
+      })
+      move.finished.then(()=>{
+        console.log("what")
+      })
+    });
   </script>
 </body>
+
 </html>

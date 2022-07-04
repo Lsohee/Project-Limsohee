@@ -108,7 +108,7 @@ const percentCalculator = {
       fill:'forwards',
       direction:direction
     })
-  }
+  } 
 
 
   
@@ -152,16 +152,6 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
 
     function zoomSwitch(){
       
-      // ${createDiv("mainBubble",attributeNode(mainBubbleMyFunc(percentCalculator.left(50),percentCalculator.top(60))))}
-      
-      // ${createDiv("motto",attributeNode(mottoBubbleMyFunc(percentCalculator.left(60),percentCalculator.top(20))))}
-      
-      // ${createDiv("prosAndCons",attributeNode(prosAndConsBubbleMyFunc(percentCalculator.left(55),percentCalculator.top(70))))}
-      
-      // ${createDiv("interests",attributeNode(interestsBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(80))))}
-      
-      // ${createDiv("projects",attributeNode(projectsBubbleMyFunc(percentCalculator.left(10),percentCalculator.top(80))))}
-      
       // ${createDiv("needFish",attributeNode(needFishMefunc(percentCalculator.left(44),percentCalculator.top(39))))}
       
       // ${createDiv("haapyFish",attributeNode(happyFishMeFunc(percentCalculator.left(29),percentCalculator.top(74))))}
@@ -202,14 +192,28 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           
           
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
-          zoom(textI,"normal",textIMovementValues("My"))
-          zoom(leafI,"normal",leafIMovementValues("My"))
           console.log("I에서 My로 이동합니다")
           currentPage.splice(1,2,false,true)
-    
-    
-    
-    
+          
+          let makeWorkStepByStep = new Promise((resovle)=>{
+            zoom(textIntro,"normal",textIntroMovementValues("My"))
+            zoom(textI,"normal",textIMovementValues("My"))
+            zoom(leafI,"normal",leafIMovementValues("My"))
+            resovle("it's done")
+          })
+          
+          .then((value)=>{
+            console.log(value)
+          })
+          
+          makeWorkStepByStep()
+          
+          
+          
+          
+          
+          
+          
     
         } else if (event.wheelDelta < 0 && currentPage[2] === true) {
           console.log("My에서 Me로 이동합니다")
