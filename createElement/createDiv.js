@@ -7,6 +7,7 @@ function attributeNode(values){
   left:${values.left}px;
   top:${values.top}px;
   color:${values.color};
+  font-size:${values.fontSize};
   '
   src = '${values.src}'
   id = '${values.id}'
