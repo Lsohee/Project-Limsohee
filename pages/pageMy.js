@@ -1,17 +1,44 @@
-function mainBubbleMyFunc(leftValue,topValue){
-  let mainBubbleMyValues = {
-    "width" :"0px",
-    "height": "0px",
-    "backgroundColor":"white",
-    "position":"absolute",
-    "left":leftValue,
-    "top":topValue,
-    "color":"none",
-    "src": "none",
-    "id":"mainBubbleMy",
+let mainBubbleMyMoveingValues = {
+  mainBubbleMyFunc : function(leftValue,topValue){
+    let mainBubbleMyValues = {
+      width :"0px",
+      height: "0px",
+      backgroundColor:"white",
+      position:"absolute",
+      left:leftValue,
+      top:topValue,
+      color:"none",
+      src: "none",
+      id:"mainBubbleMy",
+    }
+    return mainBubbleMyValues
+  },
+  intro : {
+    startLeft:100,
+    finishLeft:70,
+    startTop :40,
+    finishTop :40,
+    startScale:1,
+    finishScale:1
+  },
+    I :{
+    startLeft: 70,
+    finishLeft: 60,
+    startTop : 40,
+    finishTop : 40,
+    startScale:1,
+    finishScale:2
+  },
+  My : {
+    startLeft: 60,
+    finishLeft: 150,
+    startTop : 40,
+    finishTop : 40,
+    startScale:2,
+    finishScale:4
   }
-  return mainBubbleMyValues
 }
+
 
 
 
@@ -77,5 +104,5 @@ function projectsBubbleMyFunc(leftValue,topValue){
   }
   return projectsBubbleMyValues
 }
-export {mainBubbleMyFunc, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
+export {mainBubbleMyMoveingValues, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
   projectsBubbleMyFunc}

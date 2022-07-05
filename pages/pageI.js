@@ -1,5 +1,3 @@
-
-
 const leafIMoveingValues = {
   leafIFunc : function(leftValue,topValue){
     let leafIValues = {
@@ -22,20 +20,20 @@ const leafIMoveingValues = {
     finishScale:1
    },
    I : {
-    'startLeft': 70,
-    'finshLeft': 60,
-    "startTop" : 30,
-    "finshTop" : 30,
-    "startScale":1,
-    "finshScale":2
+    startLeft: 70,
+    finishLeft: 60,
+    startTop : 30,
+    finishTop : 30,
+    startScale:1,
+    finishScale:2
    },
    My: {
-    'startLeft': 60,
-    'finshLeft': 150,
-    "startTop" : 30,
-    "finshTop" : 30,
-    "startScale":2,
-    "finshScale":4
+    startLeft: 60,
+    finishLeft: 150,
+    startTop : 30,
+    finishTop : 30,
+    startScale:2,
+    finishScale:4
    }
 }
   // pseudo 처음 leafI 등장 값 
@@ -43,41 +41,41 @@ const leafIMoveingValues = {
 const textIMoveingValues = {
   textIFunc : function(leftValue,topValue){
     let textIvalues = {
-      "width" :"350px",
-      "height": "100px",
-      "backgroundColor":"none",
-      "position":"absolute",
-      "left":leftValue,
-      "top":topValue,
-      "color":"black",
-      "src": "none",
-      "id":"textI",
+      width:"350px",
+      height: "100px",
+      backgroundColor:"none",
+      position:"absolute",
+      left:leftValue,
+      top:topValue,
+      color:"black",
+      src: "none",
+      id:"textI",
     }
     return textIvalues
   },
     intro : {
-    'startLeft':100,
-    'finshLeft':70,
-    "startTop" :40,
-    "finshTop" :40,
-    "startScale":1,
-    "finshScale":1
+    startLeft:100,
+    finishLeft:70,
+    startTop :40,
+    finishTop :40,
+    startScale:1,
+    finishScale:1
   },
     I :{
-    'startLeft': 70,
-    'finshLeft': 60,
-    "startTop" : 40,
-    "finshTop" : 40,
-    "startScale":1,
-    "finshScale":2
+    startLeft: 70,
+    finishLeft: 60,
+    startTop : 40,
+    finishTop : 40,
+    startScale:1,
+    finishScale:2
   },
   My : {
-    'startLeft': 60,
-    'finshLeft': 150,
-    "startTop" : 40,
-    "finshTop" : 40,
-    "startScale":2,
-    "finshScale":4
+    startLeft: 60,
+    finishLeft: 150,
+    startTop : 40,
+    finishTop : 40,
+    startScale:2,
+    finishScale:4
   }
 }
 

@@ -15,16 +15,17 @@
       exercitationem enim minima quia magni inventore, reiciendis laborum error? Vitae at sed atque amet excepturi.
     </div>
   </div>
-  <script>
+  <script type="module">
     const root2 = document.getElementById("root2")
     const div = root2.querySelector("div")
     //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
     //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
-
+    
     //<!--memo 감추고 싶은 자식div이 position: absolute; 면 부모요소의 overflow:hidden;이 안먹히는것같다 -->
     //<!--memo 감추고 싶은 자식 div이 position :absolute; 여도 부모요소의position:relative;면 overflow:hidden먹힘 -->
-
-
+    
+    import {leafIMoveingValues,textIMoveingValues} from "/pages/pageI.js"
+    
     // const promise1 = new Promise((resolve)=>{
     //   setTimeout(()=>{
     //     console.log("it's start")
@@ -37,10 +38,24 @@
     //   },2000)
     //  })
 
+    
+      const obj = {
+        name : "limsohee",
+        age : "21",
+        gender : "female"
+      }
+      // console.log(obj.age)
+      obj.age = "30"
+      // console.log(obj.age)
 
 
+      // <!--memo 객체 값을 수정,생성하고 싶을때는 객체 값에 접근해서 재할당 해주기만 하면 됨
+        
+      // <!--? 근데 다른 파일에서 가져온 객체는 수정이 안되나?
+        //<!-- memo 된다 
 
-
+      //<!--? 그럼 이벤트 함수 안에 있어서 수정하지 못한 것일까?
+        //<!-- memo 잘만 수정되는데? 일단 다시 돌아가서 수정 다시 해보자
 
 
 
@@ -58,6 +73,11 @@
       move.finished.then(()=>{
         console.log("what")
       })
+      console.log(leafIMoveingValues.intro.finishLeft)
+      leafIMoveingValues.intro.finishLeft = 50
+      console.log(leafIMoveingValues.intro.finishLeft)
+
+
     });
   </script>
 </body>

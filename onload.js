@@ -18,7 +18,7 @@ import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 la
 import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
 import {createImg,attributeNodeImg} from "./createImg.js" //pseudo img 태그를 생성하는 틀
 import {leafIMoveingValues,textIMoveingValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
-import {mainBubbleMyFunc, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
+import {mainBubbleMyMoveingValues, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
   projectsBubbleMyFunc} from "./pages/pageMy.js" //pseudo My 페이지 요소들 제어
 import { needFishMefunc,happyFishMeFunc } from "./pages/pageMe.js"
 import { textMyself1Func } from "./pages/pageMyself1.js";
@@ -150,7 +150,41 @@ window.onload = function(){
     jsonObj = JSON.parse(req.responseText);
     console.dir(root2)
     controlRoot1(true); //pseudo root1 제어하는 함수
+    
+    
+    
+    
+    //? load할때에 찍어봐도 안되는 것을 보면 무언가 잘못됨
+    //pseudo console에 값이 잘 찍히는 것으로 보아 값에 접근은 잘함
+    //pseudo 그냥 수정만 안되는 것임
+    // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+    // mainBubbleMyMoveingValues.mainBubbleMyFunc().width = "10px" 
+    // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+    //? 혹시 생성은 될까?
 
+
+
+
+    console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+    mainBubbleMyMoveingValues.mainBubbleMyFunc().name = "limsohee" 
+    console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().name)
+    //pseudo 생성도 안된다 그냥 여기서는 객체 값을 변형하는게 안되나보다
+    // ? 왜? 왜 안되는 데?
+
+    
+    
+    //pseudo load와 관련이 있을 까? 
+    //pseudo 처음에 load를 했을 때 가져온 객체들의 값을 load한 그대로 쓰고 있는거지
+    //pseudo 이 모든 작동이 load함수 안에서 돌아가고 있으니까
+
+    /*
+    pseudo 추측
+    : 1. 이 모든 작동이 window.load 이벤트 함수안에서 돌아가고 있음 
+    : 2. 그렇다면 처음에 load로 불러온 값이 다시 load를 하지 않는 이상 값이 재할당이 되지 않는 것
+
+    pseudo 반박
+    : import는 load 밖에서 가져왔는데 왜 가져온 객체의 값이 load에 영향을 받나?
+    */ 
 
 
 
@@ -165,7 +199,7 @@ window.onload = function(){
       
       ${createDiv(jsonObj.textI,attributeNode(textIMoveingValues.textIFunc(percentCalculator.left(100),percentCalculator.top(40))))}
       
-      ${createDiv("fish1",attributeNode(mainBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(20))))}
+      ${createDiv("fish1",attributeNode(mainBubbleMyMoveingValues.mainBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(20))))}
 
       `
 
@@ -226,8 +260,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
   
       root2.addEventListener("wheel", (event) => {
 
-
-
+        
        
         
     
@@ -254,15 +287,12 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
           
             zoom(pageI.textIntro,"normal",moveingValues.My)
             zoom(pageI.textI,"normal",textIMoveingValues.My)
-            zoom(pageI.leafI,"normal",leafIMoveingValues.My,()=>{
-              console.log(mainBubbleMyFunc())
-              // pseudo 여기서 다른 파일에서 가져온 각각의 객체의 값들을 재할당할 수 있으면 제어가 훨씬 편할 텐데 내가 잘못 써서 안되는 걸까 아님 원래 여기서의 재할당은 안되는 것일까?
-              // mainBubbleMyFunc().width = 100
-              console.log(mainBubbleMyFunc().width)
-              // mainBubbleMyFunc().height = "100px"
-            })
-            
-          
+            zoom(pageI.leafI,"normal",leafIMoveingValues.My)
+
+
+            console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+            mainBubbleMyMoveingValues.mainBubbleMyFunc().width = "10px" //? 여기서 재할당을 해줬는데 왜 다음 console도 0px이 찍히는 것일까?
+            console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
           
           
           
@@ -270,6 +300,7 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         } else if (event.wheelDelta < 0 && currentPage[2] === true) {
           console.log("My에서 Me로 이동합니다")
           currentPage.splice(2,2,false,true)
+          console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width) //? 혹시 함수 if()문 밖에서는 재할당 될까? 
     
     
     
@@ -347,11 +378,19 @@ let currentPage = [true,false,false,false,false,false] //pseudo 스위치 함수
         let docTotalHeight = this.document.body.offsetHeight;
         if (Math.ceil( scrollHeight + windowHeight) >= docTotalHeight) {
           controlRoot1(false) //pseudo root1 제거
-          zoomSwitch()
+          //? 왜......안되지? if()문 안이라서 안되는 것은 아님
+        //   console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+        // mainBubbleMyMoveingValues.mainBubbleMyFunc().width = "10px" 
+        // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+
+          
           // pseudo 연잎과 인트로 등장
-        zoom(pageI.textIntro,"normal",moveingValues.intro)
-        zoom(pageI.textI,"normal",textIMoveingValues.intro)
-        zoom(pageI.leafI,"normal",leafIMoveingValues.intro)
+          zoom(pageI.textIntro,"normal",moveingValues.intro)
+          zoom(pageI.textI,"normal",textIMoveingValues.intro)
+          zoom(pageI.leafI,"normal",leafIMoveingValues.intro)
+
+          
+          zoomSwitch()
         }
       })
     },false);
