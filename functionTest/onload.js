@@ -16,13 +16,23 @@ import controlRoot1 from "./pages/[00]catchphrasePage-root1.js" // pseudo
 import {moveingValues} from "./pages/[01]introPage-root2.js"
 import watercolor from "./pages/waterLayer.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
 import {createDiv,attributeNode} from "./createElement/createDiv.js" //pseudo div을 생성하는 틀 
+import CreateDivValues from "./createElement/createDivValues.js"
 import {createImg,attributeNodeImg} from "./createElement/createImg.js" //pseudo img 태그를 생성하는 틀
 import {leafIMoveingValues,textIMoveingValues} from "./pages/[02]firstPage-I.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
 import {mainBubbleMyMoveingValues, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
-  projectsBubbleMyFunc} from "./pages/[03]secongPage-My.js" //pseudo My 페이지 요소들 제어
+  projectsBubbleMyFunc} from "./pages/[03]secondPage-My.js" //pseudo My 페이지 요소들 제어
 import { needFishMefunc,happyFishMeFunc } from "./pages/[04]thirdPage-Me.js"
 import { textMyself1Func } from "./pages/[05]fourthPage-Myself1.js";
 import { textMyself2Func, bottomMyself2Func } from "./pages/[06]fifthPage-Myself2.js"
+
+
+
+
+// pseudo 인스턴스
+const introText = new CreateDivValues("fit-contant","fit-contant","absolute",percentCalculator.left(10),percentCalculator.top(100),"black","none","textIntro")
+
+
+
 
 
 
@@ -150,7 +160,7 @@ window.onload = function(){
     jsonObj = JSON.parse(req.responseText);
     console.dir(root2)
     controlRoot1(true); //pseudo root1 제어하는 함수
-    
+    console.log(introText)
     
     
     
@@ -193,7 +203,7 @@ window.onload = function(){
     root2.innerHTML = `
       ${createDiv("",attributeNode(watercolor(percentCalculator.left(0),percentCalculator.top(0))))}
       
-      ${createDiv(jsonObj.intro,attributeNode(moveingValues.controlRoot2(percentCalculator.left(10),percentCalculator.top(100))))}
+      ${createDiv(jsonObj.intro,attributeNode(introText))}
       
       ${createImg("leaf",attributeNodeImg(leafIMoveingValues.leafIFunc(percentCalculator.left(100),percentCalculator.top(30))))}
       

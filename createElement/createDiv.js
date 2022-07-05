@@ -3,11 +3,10 @@ function attributeNode(values){
   style = '
   width:${values.width};
   height:${values.height};
-  background-color:${values.backgroundColor};
-  color:${values.color};
   position: ${values.position};
   left:${values.left}px;
   top:${values.top}px;
+  color:${values.color};
   '
   src = '${values.src}'
   id = '${values.id}'
