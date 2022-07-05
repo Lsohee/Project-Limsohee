@@ -137,7 +137,7 @@ const percentCalculator = {
       fill:'forwards',
       direction:direction
     })
-    make.finished.then(()=>{ //pseudo 애니메이션 동기처리를 위해 promise를 반환하는 finish 프로퍼티 안 함수를 매배변수로 추가
+    make.finished.then(()=>{ //pseudo 애니메이션 동기처리를 위해 promise를 반환하는 finish 프로퍼티 안 함수를 매개변수로 추가
       resolve()
     })
   } 
@@ -163,26 +163,20 @@ window.onload = function(){
     console.log(introText)
     
     
-    
-    //? load할때에 찍어봐도 안되는 것을 보면 무언가 잘못됨
-    //pseudo console에 값이 잘 찍히는 것으로 보아 값에 접근은 잘함
-    //pseudo 그냥 수정만 안되는 것임
-    // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+    function commant(){
+
+      //? load할때에 찍어봐도 안되는 것을 보면 무언가 잘못됨
+      //pseudo console에 값이 잘 찍히는 것으로 보아 값에 접근은 잘함
+      //pseudo 그냥 수정만 안되는 것임
+      // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
     // mainBubbleMyMoveingValues.mainBubbleMyFunc().width = "10px" 
     // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
     //? 혹시 생성은 될까?
-
-
-
-
-    console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
-    mainBubbleMyMoveingValues.mainBubbleMyFunc().name = "limsohee" 
-    console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().name)
+    // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().width)
+    // mainBubbleMyMoveingValues.mainBubbleMyFunc().name = "limsohee" 
+    // console.log(mainBubbleMyMoveingValues.mainBubbleMyFunc().name)
     //pseudo 생성도 안된다 그냥 여기서는 객체 값을 변형하는게 안되나보다
     // ? 왜? 왜 안되는 데?
-
-    
-    
     //pseudo load와 관련이 있을 까? 
     //pseudo 처음에 load를 했을 때 가져온 객체들의 값을 load한 그대로 쓰고 있는거지
     //pseudo 이 모든 작동이 load함수 안에서 돌아가고 있으니까
@@ -191,11 +185,12 @@ window.onload = function(){
     pseudo 추측
     : 1. 이 모든 작동이 window.load 이벤트 함수안에서 돌아가고 있음 
     : 2. 그렇다면 처음에 load로 불러온 값이 다시 load를 하지 않는 이상 값이 재할당이 되지 않는 것
-
+    
     pseudo 반박
     : import는 load 밖에서 가져왔는데 왜 가져온 객체의 값이 load에 영향을 받나?
     */ 
-
+   
+  }
 
 
     // pseudo 동적으로 요소를 생성시킴 
@@ -210,7 +205,6 @@ window.onload = function(){
       ${createDiv(jsonObj.textI,attributeNode(textIMoveingValues.textIFunc(percentCalculator.left(100),percentCalculator.top(40))))}
       
       ${createDiv("fish1",attributeNode(mainBubbleMyMoveingValues.mainBubbleMyFunc(percentCalculator.left(20),percentCalculator.top(20))))}
-
       `
 
       
