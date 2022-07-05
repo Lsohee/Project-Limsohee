@@ -19,7 +19,7 @@ const percentCalculator = {
 
 
 // pseudo 움직임 주는 함수
-function zoom(element,direction,movementValues,resolve="movement is over"){
+function zoom(element,direction,movementValues,resolve=()=>{console.log("movement is over")}){
   let make = element.animate([
     //여기의 left는 화면 비율
     {left:`${movementValues.startLeft}%`,top:`${movementValues.startTop}%`,transform :`scale(${movementValues.startScale})`},
@@ -47,6 +47,7 @@ import {
 } from "/createElement/createDiv.js"
 import CreateDivValues from "./createElement/createDivValues.js"
 import controlRoot1 from "./pages/[00]catchphrasePage-root1.js" 
+import CreateMovingValues from "./createElement/createMovingValues.js"
 
 
 
@@ -55,8 +56,9 @@ import controlRoot1 from "./pages/[00]catchphrasePage-root1.js"
 // pseudo 인스턴스 선언
 
 // --> intro text 값 배열
-const introText = [
-  new CreateDivValues("fit-contant", "fit-contant", "absolute", percentCalculator.left(0), percentCalculator.top(100), "black", "none", "introText")
+const introTextArr = [
+  new CreateDivValues("fit-contant", "fit-contant", "absolute", percentCalculator.left(0), percentCalculator.top(100), "black", "none", "introText"),
+  new CreateMovingValues(10,10,100,30,1,1)
 ]
 
 // --> 페이지 I text 값 배열
@@ -91,9 +93,13 @@ window.onload = function () {
     console.log(jsonObj.intro)
 
     console.log(root2)
-    console.log(introText)
+    console.log(introTextArr)
+
+
+
+
     root2.innerHTML = `
-    ${createDiv(jsonObj.intro,attributeNode(introText[0]))}
+    ${createDiv(jsonObj.intro,attributeNode(introTextArr[0]))}
     ${createDiv(jsonObj.textI,attributeNode(pageIText[0]))}
     ${createDiv("leaf",attributeNode(pageILeaf[0]))}
     `
@@ -230,7 +236,7 @@ window.onload = function () {
         controlRoot1(false) //pseudo root1 제거
 
         // pseudo 연잎과 인트로 등장
-        // zoom()
+        zoom(introText,"normal",introTextArr[1])
         zoomSwitch()
       }
     })
