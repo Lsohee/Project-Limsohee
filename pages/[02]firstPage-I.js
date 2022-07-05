@@ -1,6 +1,6 @@
-const leafIMoveingValues = {
-  leafIFunc : function(leftValue,topValue){
-    let leafIValues = {
+const imgInI_leaf = {
+  startPosition : function(leftValue,topValue){
+    let values = {
       width :"300px",
       height: "300px",
       position:"absolute",
@@ -9,8 +9,9 @@ const leafIMoveingValues = {
       src: "./img/leaf.svg",
       id:"leafI",
     }
-    return leafIValues
+    return values
   },
+  
     intro : {
     startLeft:100,
     finishLeft:70,
@@ -38,9 +39,9 @@ const leafIMoveingValues = {
 }
   // pseudo 처음 leafI 등장 값 
 
-const textIMoveingValues = {
-  textIFunc : function(leftValue,topValue){
-    let textIvalues = {
+const textInI_introduceText = {
+  startPosition : function(leftValue,topValue){
+    let values = {
       width:"350px",
       height: "100px",
       backgroundColor:"none",
@@ -51,8 +52,11 @@ const textIMoveingValues = {
       src: "none",
       id:"textI",
     }
-    return textIvalues
+    return values
   },
+
+  
+  
     intro : {
     startLeft:100,
     finishLeft:70,
@@ -79,4 +83,4 @@ const textIMoveingValues = {
   }
 }
 
-export {leafIMoveingValues,textIMoveingValues}
+export {imgInI_leaf,textInI_introduceText}

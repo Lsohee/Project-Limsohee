@@ -12,17 +12,17 @@ const root2 = document.getElementById("root2")
 
 
 // pseudo 파일 import
-import controlRoot1 from "./pages/root1.js" // pseudo  
-import {moveingValues} from "./pages/root2.js"
-import watercolor from "./waterColor.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
-import {createDiv,attributeNode} from "./createDiv.js" //pseudo div을 생성하는 틀 
-import {createImg,attributeNodeImg} from "./createImg.js" //pseudo img 태그를 생성하는 틀
-import {leafIMoveingValues,textIMoveingValues} from "./pages/pageI.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
+import controlRoot1 from "./pages/[00]catchphrasePage-root1.js" // pseudo  
+import {moveingValues} from "./pages/[01]introPage-root2.js"
+import watercolor from "./pages/waterLayer.js";// pseudo 물느낌을 내는 물색 layerdiv 값 (object)
+import {createDiv,attributeNode} from "./createElement/createDiv.js" //pseudo div을 생성하는 틀 
+import {createImg,attributeNodeImg} from "./createElement/createImg.js" //pseudo img 태그를 생성하는 틀
+import {leafIMoveingValues,textIMoveingValues} from "./pages/[02]firstPage-I.js"// pseudo I 소개 내용의 div을 생성한 값 (object)
 import {mainBubbleMyMoveingValues, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
-  projectsBubbleMyFunc} from "./pages/pageMy.js" //pseudo My 페이지 요소들 제어
-import { needFishMefunc,happyFishMeFunc } from "./pages/pageMe.js"
-import { textMyself1Func } from "./pages/pageMyself1.js";
-import { textMyself2Func, bottomMyself2Func } from "./pages/pageMyself2.js"
+  projectsBubbleMyFunc} from "./pages/[03]secongPage-My.js" //pseudo My 페이지 요소들 제어
+import { needFishMefunc,happyFishMeFunc } from "./pages/[04]thirdPage-Me.js"
+import { textMyself1Func } from "./pages/[05]fourthPage-Myself1.js";
+import { textMyself2Func, bottomMyself2Func } from "./pages/[06]fifthPage-Myself2.js"
 
 
 

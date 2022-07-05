@@ -1,19 +1,17 @@
-
-
-const moveingValues = {
-  controlRoot2 : function(leftValue,topValue){
-    let introValues = {
-      "width" :"fit-contant",
-      "height": "fit-contant",
-      "backgroundColor":"none",
-      "position":"absolute",
-      "left":leftValue,
-      "top":topValue,
-      "color":"black",
-      "src": "none",
-      "id":"textIntro",
+const textInIntro_introText = {
+  startPosition : function(leftValue,topValue){
+    let values = {
+      width :"fit-contant",
+      height: "fit-contant",
+      backgroundColor:"none",
+      position:"absolute",
+      left:leftValue,
+      top:topValue,
+      color:"black",
+      src: "none",
+      id:"textIntro",
     }
-    return introValues
+    return values
   },
   intro : {
     startLeft:10,
@@ -42,4 +40,4 @@ const moveingValues = {
   }
 }
 
-export {moveingValues}
+export {textInIntro_introText}

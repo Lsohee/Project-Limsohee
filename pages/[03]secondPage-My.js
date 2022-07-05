@@ -1,6 +1,6 @@
-let mainBubbleMyMoveingValues = {
-  mainBubbleMyFunc : function(leftValue,topValue){
-    let mainBubbleMyValues = {
+let imgInMy_MainBubble = {
+  startPosition : function(leftValue,topValue){
+    let values = {
       width :"0px",
       height: "0px",
       backgroundColor:"white",
@@ -11,7 +11,7 @@ let mainBubbleMyMoveingValues = {
       src: "none",
       id:"mainBubbleMy",
     }
-    return mainBubbleMyValues
+    return values
   },
   intro : {
     startLeft:100,
@@ -104,5 +104,5 @@ function projectsBubbleMyFunc(leftValue,topValue){
   }
   return projectsBubbleMyValues
 }
-export {mainBubbleMyMoveingValues, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
+export {imgInMy_MainBubble, mottoBubbleMyFunc,prosAndConsBubbleMyFunc, interestsBubbleMyFunc,
   projectsBubbleMyFunc}
