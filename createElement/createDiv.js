@@ -8,6 +8,9 @@ function attributeNode(values){
   top:${values.top}px;
   color:${values.color};
   font-size:${values.fontSize};
+  opacity : ${values.opacity};
+  text-align : center;
+  line-height:2em;
   '
   src = '${values.src}'
   id = '${values.id}'

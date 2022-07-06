@@ -20,6 +20,18 @@
   background-color:#89CCDB;
 }
 
-// #zoomIncontantI{
-//   animation-name: zoomIncontantI;
-// }
+
+.zoomIn {
+  animation-name: zoomIn;
+  animation-duration:2s;
+  animation-direction:normal;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes zoomIn {
+  0%{
+    opacity: 0;
+  }
+  100%{opacity: 1;}
+}
