@@ -11,14 +11,14 @@ function attributeNodeImg(values){
   src = '${values.src}'
   alt = ${values.alt}
   id = '${values.id}'
+  innerHTML = '${values.innerHTML}'
   `
 }
 
 function createImg(textNode,attributeNodeImg){
   return `
-  <img ${attributeNodeImg}>
-  ${textNode}
-  </img>
+  <img ${attributeNodeImg} 
+  ></img>
   `
 }
 

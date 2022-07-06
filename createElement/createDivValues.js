@@ -1,5 +1,5 @@
 export default class CreateDivValues {
-  constructor(width,height,position,left,top,fontSize,color,src,id,opacity=1){
+  constructor(width,height,position,left,top,fontSize,color,src,id,opacity=1 ){
     this.width = width;
     this.height = height;
     this.position = position;
