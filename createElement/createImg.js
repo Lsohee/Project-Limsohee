@@ -6,15 +6,17 @@ function attributeNodeImg(values){
   position: ${values.position};
   left:${values.left}px;
   top:${values.top}px;
+  opacity: ${values.opacity};
   '
   src = '${values.src}'
+  alt = ${values.alt}
   id = '${values.id}'
   `
 }
 
-function createImg(textNode,attributeNode){
+function createImg(textNode,attributeNodeImg){
   return `
-  <img ${attributeNode}>
+  <img ${attributeNodeImg}>
   ${textNode}
   </img>
   `

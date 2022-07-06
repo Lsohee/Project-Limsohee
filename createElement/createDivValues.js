@@ -10,5 +10,6 @@ export default class CreateDivValues {
     this.src = src;
     this.id = id;
     this.opacity =opacity;
+    this.alt = id
   }
 }
