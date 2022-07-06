@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div id="root2" style="width:fit-content; height:fit-content; ">
+  <div id="root2" style="width:100px; height:100px; ">
     <div style="width:fit-content; height:fit-content; position: absolute;">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolore iste vero earum consectetur, aut
       exercitationem enim minima quia magni inventore, reiciendis laborum error? Vitae at sed atque amet excepturi.
@@ -18,13 +18,15 @@
   <script type="module">
     const root2 = document.getElementById("root2")
     const div = root2.querySelector("div")
+
+    console.dir(div)
     //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
     //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
     
     //<!--memo 감추고 싶은 자식div이 position: absolute; 면 부모요소의 overflow:hidden;이 안먹히는것같다 -->
     //<!--memo 감추고 싶은 자식 div이 position :absolute; 여도 부모요소의position:relative;면 overflow:hidden먹힘 -->
     
-    import {leafIMoveingValues,textIMoveingValues} from "/pages/pageI.js"
+    // import {leafIMoveingValues,textIMoveingValues} from "/pages/pageI.js"
     
     // const promise1 = new Promise((resolve)=>{
     //   setTimeout(()=>{
@@ -44,10 +46,18 @@
         age : "21",
         gender : "female"
       }
+      const testArr = []
       // console.log(obj.age)
-      obj.age = "30"
+      // obj.age = "30"
       // console.log(obj.age)
-
+      div.addEventListener("click",()=>{
+        console.log("정상작동")
+        testArr.pop()
+        testArr.unshift(obj.age)
+        console.log(testArr[0])
+        div.innerHTML = testArr[0]
+      })
+      
 
       // <!--memo 객체 값을 수정,생성하고 싶을때는 객체 값에 접근해서 재할당 해주기만 하면 됨
         
@@ -59,26 +69,26 @@
 
 
 
-    div.addEventListener("click", function() {
-      let move = div.animate([{
-          transform: "scale(1)"
-        },
-        {
-          transform: "scale(2)"
-        }
-      ], {
-        duration: 2300,
-        fill: 'forwards',
-      })
-      move.finished.then(()=>{
-        console.log("what")
-      })
-      console.log(leafIMoveingValues.intro.finishLeft)
-      leafIMoveingValues.intro.finishLeft = 50
-      console.log(leafIMoveingValues.intro.finishLeft)
+    // div.addEventListener("click", function() {
+    //   let move = div.animate([{
+    //       transform: "scale(1)"
+    //     },
+    //     {
+    //       transform: "scale(2)"
+    //     }
+    //   ], {
+    //     duration: 2300,
+    //     fill: 'forwards',
+    //   })
+    //   move.finished.then(()=>{
+    //     console.log("what")
+    //   })
+    //   console.log(leafIMoveingValues.intro.finishLeft)
+    //   leafIMoveingValues.intro.finishLeft = 50
+    //   console.log(leafIMoveingValues.intro.finishLeft)
 
 
-    });
+    // });
   </script>
 </body>
 

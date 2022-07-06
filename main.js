@@ -16,7 +16,17 @@ const percentCalculator = {
 }
 
 
+//pseudo 내용을 담을 배열 그릇
+const myMainTextArr = []
+const meMainTextArr = []
 
+
+//pseudo 배열을 바꿔주는 함수
+function changeArr(arrName,pushValue){
+  arrName.pop()
+  arrName.push(pushValue);
+  return arrName[0]
+}
 
 
 // pseudo 움직임 주는 함수
@@ -197,12 +207,8 @@ window.onload = function () {
     jsonObj = JSON.parse(req.responseText);
 
 
-    const myMainTextArr = [
-      jsonObj.motto
-    ]
     // pseudo 클릭했을 때 배열을 변형하면 되지 않을까?
     // --> 그러면 원형을 건들여야되나?
-
 
     root2.innerHTML = `
     ${createDiv(jsonObj.intro,attributeNode(introTextArr[0]))}
@@ -228,32 +234,46 @@ window.onload = function () {
     `
 
 
+ // pseudo element getting
+ const introText = document.getElementById("introText")
+ const pageIText = document.getElementById("pageIText")
+ const pageILeaf = document.getElementById("pageILeaf")
+
+ const mainBubble = document.getElementById("mainBubble")
+ const mainBubbleText = document.getElementById("mainBubbleText")
+ const mottoBubble = document.getElementById("mottoBubble")
+ const prosAndConsBubble = document.getElementById("prosAndConsBubble")
+ const projectsBubble = document.getElementById("projectsBubble")
+ const interestsBubble = document.getElementById("interestsBubble")
+
+
+ const makeMeHappyText = document.getElementById("makeMeHappyText")
+ const myself1Text = document.getElementById("myself1Text")
+ const myself2Text = document.getElementById("myself2Text")
 
 
 
+ mottoBubble.addEventListener("click",()=>{
+  console.log(myMainTextArr[0]);
+  console.log(jsonObj)
+  myMainTextArr.splice(0,1,JSON.parse( jsonObj))
+  console.log(myMainTextArr[0]);
 
+  mainBubbleText.innerText = mainBubbleTextArr[0]
+  //? 왜 console에는 jsonObj.motto 가 제대로 찍였는데
+  //? mainBubbleText에 들어가기만 하면 [object Object]라는 단어가 찍힐까
+  // --> [object Object] : json데이터를 stringify() 즉 js로 변환하는 과정 없이 찍으면 나오는 값이래
 
+  // changeArr(myMainTextArr,jsonObj.motto);
+  // console.log(myMainTextArr[0]);
+  // console.log(mainBubbleText.innerHTML)
+})
 
 
     let currentPage = [true, false, false, false, false, false]
 
     function zoomSwitch() {
-      // pseudo element getting
-      const introText = document.getElementById("introText")
-      const pageIText = document.getElementById("pageIText")
-      const pageILeaf = document.getElementById("pageILeaf")
-
-      const mainBubble = document.getElementById("mainBubble")
-      const mainBubbleText = document.getElementById("mainBubbleText")
-      const mottoBubble = document.getElementById("mottoBubble")
-      const prosAndConsBubble = document.getElementById("prosAndConsBubble")
-      const projectsBubble = document.getElementById("projectsBubble")
-      const interestsBubble = document.getElementById("interestsBubble")
-
-
-      const makeMeHappyText = document.getElementById("makeMeHappyText")
-      const myself1Text = document.getElementById("myself1Text")
-      const myself2Text = document.getElementById("myself2Text")
+     
 
       console.dir(root2)
       // prosAndConsBubble.innerHTML =
@@ -261,17 +281,20 @@ window.onload = function () {
 
 
 
+
+
+     
+      
+      
+      
+      
+      
+
+
+
       root2.addEventListener("wheel", (event) => {
-
-
-
-
-
         if (event.wheelDelta > 0 && currentPage[0] === true) {
           console.log("움직이지 않습니다")
-
-
-
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
           console.log("zero에서 I로 이동합니다")
 
@@ -296,7 +319,12 @@ window.onload = function () {
           currentPage.splice(0, 2, false, true)
 
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
+          console.log("I에서 My로 이동합니다")
+          currentPage.splice(1, 2, false, true)
 
+          
+          
+          
 
           // --> page I elements
           zoom(pageIText, "normal", pageITextArr[3])
@@ -320,8 +348,6 @@ window.onload = function () {
 
 
 
-          console.log("I에서 My로 이동합니다")
-          currentPage.splice(1, 2, false, true)
 
 
 
