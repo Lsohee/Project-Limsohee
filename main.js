@@ -101,8 +101,8 @@ const pageILeafArr = [
 // --> 페이지 My main bubble 값 배열
 const mainBubbleArr = [
   new CreateDivValues("300px", "300px", "absolute", percentCalculator.left(20), percentCalculator.top(20), "0px", "black", "img/mainBubble220706.svg", "mainBubble", 0),
-  new CreateMovingValues(55, 50, 20, 20, 1, 1, 0, 0.5),
-  new CreateMovingValues(50, 55, 20, 30, 1, 2, 0.5, 1), // pseudo page My (주 컨텐츠)
+  new CreateMovingValues(55, 50, 20, 20, 0.3, 0.4, 0, 0.5),
+  new CreateMovingValues(50, 55, 20, 30, 0.4, 2, 0.5, 1), // pseudo page My (주 컨텐츠)
   new CreateMovingValues(55, 120, 30, 30, 2, 5, 1, 0.2), // pseudo page Me (사라짐)
   new CreateMovingValues(120, 160, 30, 30, 5, 5.5, 0.2, 0)
 ]
@@ -128,6 +128,7 @@ const prosAndConsBubbleArr = [
 ]
 
 
+// --> 페이지 My projects bubble 값 배열
 const projectsBubbleArr = [
   new CreateDivValues("80px", "80px", "absolute", percentCalculator.left(20), percentCalculator.top(40), "0px", "black", "img/projects220706.svg", "projectsBubble", 0),
   new CreateMovingValues(40, 35, 30, 40, 1, 1, 0, 0.5),
@@ -138,6 +139,7 @@ const projectsBubbleArr = [
 
 
 
+// --> 페이지 My interests bubble 값 배열
 const interestsBubbleArr = [
   new CreateDivValues("80px", "90px", "absolute", percentCalculator.left(20), percentCalculator.top(40), "0px", "black", "img/interests220706.svg", "interestsBubble", 0),
   new CreateMovingValues(50, 45, 30, 40, 1, 1, 0, 0.5),
@@ -154,7 +156,7 @@ const interestsBubbleArr = [
 // --> 페이지 My mainBubbleText 값 배열
 const mainBubbleTextArr = [
   new CreateDivValues("300px", "fit-contant", "absolute", percentCalculator.left(20), percentCalculator.top(20), "10px", "black", "none", "mainBubbleText", 0),
-  new CreateMovingValues(55, 50, 30, 30, 1, 1, 0, 0.5), // pseudo page I(나타남)
+  new CreateMovingValues(55, 50, 30, 30, 0.3, 0.4, 0, 0.5), // pseudo page I(나타남)
   new CreateMovingValues(50, 55, 30, 30, 1, 2, 0.5, 1), // pseudo page My (주 컨텐츠)
   new CreateMovingValues(55, 120, 30, 30, 2, 5, 1, 0.2), // pseudo page Me (사라짐)
   new CreateMovingValues(120, 140, 30, 30, 5, 5.5, 0.2, 0)
@@ -198,6 +200,8 @@ window.onload = function () {
     const myMainTextArr = [
       jsonObj.motto
     ]
+    // pseudo 클릭했을 때 배열을 변형하면 되지 않을까?
+    // --> 그러면 원형을 건들여야되나?
 
 
     root2.innerHTML = `
