@@ -19,6 +19,35 @@
     const root2 = document.getElementById("root2")
     const div = root2.querySelector("div")
 
+
+
+
+    const testArr = ["lim", "so", "hee", "is", "a", "girl"]
+// console.log(testArr.indexOf("so"))
+function testFuncTwo(testArrName, element) {
+  let value 
+  testArrName.push(testArrName[0])
+  value = testArrName.indexOf(element)
+  testArrName.copyWithin(0, testArrName.indexOf(element), testArrName.indexOf(element) + 1)
+  testArrName.splice(value,1)
+  // return console.log(testArrName)
+}
+
+div.addEventListener("click",()=>{
+  div.innerHTML = (testArr,"is")
+
+})
+
+
+
+
+    
+    
+    
+    
+    
+    
+
     console.dir(div)
     //<!-- memo 이벤트 함수 안에서는 root식별과 getting이 가능 이벤트 함수에서 root를 return도 해봤으나 안됨 -->
     //<!-- memo 따라서 div이 생성된 이벤트가 일어난 함수 안에서는 해당 div을 getting 가능하다 -->
@@ -41,22 +70,22 @@
     //  })
 
     
-      const obj = {
-        name : "limsohee",
-        age : "21",
-        gender : "female"
-      }
-      const testArr = []
-      // console.log(obj.age)
-      // obj.age = "30"
-      // console.log(obj.age)
-      div.addEventListener("click",()=>{
-        console.log("정상작동")
-        testArr.pop()
-        testArr.unshift(obj.age)
-        console.log(testArr[0])
-        div.innerHTML = testArr[0]
-      })
+      // const obj = {
+      //   name : "limsohee",
+      //   age : "21",
+      //   gender : "female"
+      // }
+      // const testArr = []
+      // // console.log(obj.age)
+      // // obj.age = "30"
+      // // console.log(obj.age)
+      // div.addEventListener("click",()=>{
+      //   console.log("정상작동")
+      //   testArr.pop()
+      //   testArr.unshift(obj.age)
+      //   console.log(testArr[0])
+      //   div.innerHTML = testArr[0]
+      // })
       
 
       // <!--memo 객체 값을 수정,생성하고 싶을때는 객체 값에 접근해서 재할당 해주기만 하면 됨
