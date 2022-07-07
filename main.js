@@ -1,27 +1,13 @@
 // pseudo root2 getting
 const root2 = document.getElementById("root2")
 
-
-
-
-
-
 //pseudo 배열을 바꿔주는 함수
-function changeArr(arrName, element) {
-  let value
-  arrName.push(arrName[0])
-  value = arrName.indexOf(element)
-  arrName.copyWithin(0, arrName.indexOf(element), arrName.indexOf(element) + 1)
-  arrName.splice(value, 1)
+function changeArr(arrName, element,text) {
+  arrName.pop()
+  arrName.push(element)
+  let temp = `${arrName[0]}`
+  return text.innerHTML = temp
 }
-
-
-
-
-
-
-
-
 
 // pseudo file import
 import {
@@ -38,12 +24,12 @@ import percentCalculator from "./functions/createPercentValues.js"
 import zoom from "./functions/createMovement.js"
 
 // pseudo 인스턴스 값 import
-import controlRoot1 from "./pages/[00]catchphrasePage-root1.js"
-import introTextArr from "./pages/[01]introPage-root2.js"
+import controlRoot1 from "./elementValues/[00]elements-root1.js"
+import introTextArr from "./elementValues/[01]elements-root2.js"
 import {
   pageITextArr,
   pageILeafArr
-} from "./pages/[02]firstPage-I.js"
+} from "./elementValues/[02]elements-I.js"
 import {
   mainBubbleArr,
   mainBubbleTextArr,
@@ -51,8 +37,11 @@ import {
   projectsBubbleArr,
   prosAndConsBubbleArr,
   interestsBubbleArr
-} from "./pages/[03]secondPage-My.js"
+} from "./elementValues/[03]elements-My.js"
 
+
+import pageIntroFunc from "./pageValues/[01]page-Intro.js"
+import pageIFunc from "./pageValues/[02]page-I.js"
 
 
 // pseudo 만들고 있는 인스턴스 값
@@ -82,42 +71,18 @@ const myself2TextArr = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // pseudo JSON파일 통신 , load 됐을 때 작동하는 이벤트 함수 
 window.onload = function () {
   let req = new XMLHttpRequest();
   let jsonObj
 
-
   // pseudo req가 load됐을 때 이벤트 함수
   req.addEventListener("load", function () {
     jsonObj = JSON.parse(req.responseText);
 
-
-
     //pseudo 내용을 담을 배열 그릇
-    const myMainTextArr = [jsonObj.projects, jsonObj.motto, jsonObj.happy]
+    const myMainTextArr = [jsonObj.projects]
     const meMainTextArr = []
-
 
     // pseudo 클릭했을 때 배열을 변형하면 되지 않을까?
     // --> 그러면 원형을 건들여야되나?
@@ -127,8 +92,6 @@ window.onload = function () {
     ${createDiv(jsonObj.happy,attributeNode(makeMeHappyTextArr[0]))}
     ${createDiv(jsonObj.textMyself1,attributeNode(myself1TextArr[0]))}
     ${createDiv(jsonObj.textMyself2, attributeNode(myself2TextArr[0]))}
-
-
     
     ${createImg("",attributeNodeImg(interestsBubbleArr[0]))}
     ${createImg("",attributeNodeImg(projectsBubbleArr[0]))}
@@ -137,16 +100,10 @@ window.onload = function () {
     ${createImg("",attributeNodeImg(mottoBubbleArr[0]))}
     ${createDiv(myMainTextArr[0],attributeNode(mainBubbleTextArr[0]))}
     
-    
-    
-    
-    
     ${createImg("",attributeNodeImg(pageILeafArr[0]))}
     ${createDiv(jsonObj.textI,attributeNode(pageITextArr[0]))}
     `
-
-
-    // pseudo element getting
+    // pseudo element getting (여기도 객체로 묶어서 정리할까?)
     const introText = document.getElementById("introText")
     const pageIText = document.getElementById("pageIText")
     const pageILeaf = document.getElementById("pageILeaf")
@@ -164,14 +121,14 @@ window.onload = function () {
     const myself2Text = document.getElementById("myself2Text")
 
 
+    // pseudo bubbles click event
+    projectsBubble.addEventListener("click",()=>{changeArr(myMainTextArr, jsonObj.projects,mainBubbleText)})
+    mottoBubble.addEventListener("click",()=>{changeArr(myMainTextArr, jsonObj.motto,mainBubbleText)})
+    prosAndConsBubble.addEventListener("click",()=>{changeArr(myMainTextArr, jsonObj.prosAndCons,mainBubbleText)})
+    interestsBubble.addEventListener("click",()=>{changeArr(myMainTextArr, jsonObj.interests,mainBubbleText)})
 
-    mottoBubble.addEventListener("click", () => {
-      changeArr(myMainTextArr, jsonObj.motto)
-      let temp = `${myMainTextArr[0]}`
-      mainBubbleText.innerHTML = temp
-    })
-
-
+    
+    
     let currentPage = [true, false, false, false, false, false]
 
     function zoomSwitch() {
@@ -180,36 +137,14 @@ window.onload = function () {
         if (event.wheelDelta > 0 && currentPage[0] === true) {
           console.log("움직이지 않습니다")
 
-
         } else if (event.wheelDelta < 0 && currentPage[0] === true) {
           currentPage.splice(0, 2, false, true)
           console.log("zero에서 I로 이동합니다")
-
-
-
-
-          // --> page I elements
-          zoom(introText, "normal", introTextArr[2])
-          zoom(pageIText, "normal", pageITextArr[2])
-          zoom(pageILeaf, "normal", pageILeafArr[2])
-
-
-          // --> page My elements 
-          zoom(mainBubbleText, "normal", mainBubbleTextArr[1])
-          zoom(mainBubble, "normal", mainBubbleArr[1])
-          zoom(mottoBubble, "normal", mottoBubbleArr[1])
-          zoom(prosAndConsBubble, "normal", prosAndConsBubbleArr[1])
-          zoom(projectsBubble, "normal", projectsBubbleArr[1])
-          zoom(interestsBubble, "normal", interestsBubbleArr[1])
-
-
-
+          pageIFunc("normal")
+ 
         } else if (event.wheelDelta < 0 && currentPage[1] === true) {
           currentPage.splice(1, 2, false, true)
           console.log("I에서 My로 이동합니다")
-
-
-
 
           // --> page I elements
           zoom(pageIText, "normal", pageITextArr[3])
@@ -229,13 +164,6 @@ window.onload = function () {
 
           // --> page Me elements
           zoom(makeMeHappyText, "normal", makeMeHappyTextArr[1])
-
-
-
-
-
-
-
 
 
         } else if (event.wheelDelta < 0 && currentPage[2] === true) {
@@ -381,21 +309,8 @@ window.onload = function () {
 
 
         } else if (event.wheelDelta > 0 && currentPage[1] === true) {
-          // --> page I elements
-          zoom(introText, "reverse", introTextArr[2])
-          zoom(pageIText, "reverse", pageITextArr[2])
-          zoom(pageILeaf, "reverse", pageILeafArr[2])
-
-
-          // --> page My elements 
-          zoom(mainBubbleText, "reverse", mainBubbleTextArr[1])
-          zoom(mainBubble, "reverse", mainBubbleArr[1])
-          zoom(mottoBubble, "reverse", mottoBubbleArr[1])
-          zoom(prosAndConsBubble, "reverse", prosAndConsBubbleArr[1])
-          zoom(projectsBubble, "reverse", projectsBubbleArr[1])
-          zoom(interestsBubble, "reverse", interestsBubbleArr[1])
-
-
+          pageIFunc("reverse")
+        
           console.log("I에서 zero로 이동합니다")
           currentPage.splice(0, 2, true, false)
         }
@@ -420,15 +335,9 @@ window.onload = function () {
         // memo controlRoot1이 계속 작동하면 root1을 이미 없앴기 때문에 root1이 안 잡힌다고 error가 뜬다
         // memo 그런데 이 error를 없애면 밑의 intro페이지를 움직이는 함수들이 계속 작동해서 스크롤 할때마다 계속 intro요소들이 등장하게된다
         // memo 그래서 여기 error는 내비둘거다
-
-
-
         // pseudo 연잎과 인트로 등장
         zoomSwitch()
-        zoom(introText, "normal", introTextArr[1])
-        zoom(pageIText, "normal", pageITextArr[1])
-        zoom(pageILeaf, "normal", pageILeafArr[1])
-
+        pageIntroFunc("normal")
       }
     })
 
