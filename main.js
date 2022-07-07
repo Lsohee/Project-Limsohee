@@ -17,15 +17,22 @@ const percentCalculator = {
 
 
 //pseudo 내용을 담을 배열 그릇
-const myMainTextArr = []
 const meMainTextArr = []
 
 
+
+
+
+
+
+
 //pseudo 배열을 바꿔주는 함수
-function changeArr(arrName,pushValue){
-  arrName.pop()
-  arrName.push(pushValue);
-  return arrName[0]
+function changeArr(arrName,element){
+  let value 
+  arrName.push(arrName[0])
+  value = arrName.indexOf(element)
+  arrName.copyWithin(0, arrName.indexOf(element), arrName.indexOf(element) + 1)
+  arrName.splice(value,1)
 }
 
 
@@ -205,6 +212,7 @@ window.onload = function () {
   // pseudo req가 load됐을 때 이벤트 함수
   req.addEventListener("load", function () {
     jsonObj = JSON.parse(req.responseText);
+    const myMainTextArr = [jsonObj.projects,jsonObj.motto,jsonObj.happy]
 
 
     // pseudo 클릭했을 때 배열을 변형하면 되지 않을까?
@@ -254,19 +262,61 @@ window.onload = function () {
 
 
  mottoBubble.addEventListener("click",()=>{
+   // click event : work 
   console.log(myMainTextArr[0]);
-  console.log(jsonObj)
-  myMainTextArr.splice(0,1,JSON.parse( jsonObj))
-  console.log(myMainTextArr[0]);
+  changeArr(myMainTextArr,jsonObj.motto)
+  console.log(myMainTextArr[0])
+  let temp = `${myMainTextArr[0]}`
+  console.log(temp)
+  mainBubbleText.innerHTML = temp
 
-  mainBubbleText.innerText = mainBubbleTextArr[0]
+  
+  
+  /*
+  --> 해결
+  --> myMainTextArr[0]가 console에는 내용으로 찍히는 데 mainBubbleText.innerHTML로 재할당을 하면 [object object]로 찍힘
+  --> 뭔가 통신 순서의 문제 인거 같음
+  --> 그러면 적어도 mainBubbleText.innerHTML에 myMainTextArr[0]를 재할당하기 전에는 myMainTextArr[0]는 내용이라는 거니까
+  --> 재할당하기 전의 myMainTextArr[0]를 변수에 `` 백틱을 이용해서 탬플릿 문자열을 만듬 
+  --> myMainTextArr[0]를 텍스트화 해서 변수에 텍스트를 담음 
+  * myMainTextArr[0]와  myMainTextArr[0]의 텍스트 값을 분리해서 생각함 
+  */ 
+  
+  // console.log(jsonObj)
+  // json load : work
+  
+  // myMainTextArr.splice(0,1,)
+  // console.log(myMainTextArr[0]);
+  // splice() : work
+  
+
+  // 재할당 : 애매함 
   //? 왜 console에는 jsonObj.motto 가 제대로 찍였는데
   //? mainBubbleText에 들어가기만 하면 [object Object]라는 단어가 찍힐까
-  // --> [object Object] : json데이터를 stringify() 즉 js로 변환하는 과정 없이 찍으면 나오는 값이래
+  // --> [object Object] : json데이터를 purse() 즉 js로 변환하는 과정 없이 찍으면 나오는 값이래
 
-  // changeArr(myMainTextArr,jsonObj.motto);
-  // console.log(myMainTextArr[0]);
-  // console.log(mainBubbleText.innerHTML)
+
+
+
+  /*
+  : 지금 상황
+  : 1. 버튼 bubble의 클릭이벤트 확인
+  : 2. 내용을 담는 main bubble text div 을 console.dir()찍어서 innerHTML 접근법 확인(객체)
+  : 3. 현재 main Bubble text div의 innerHTML인 myMainTextArr[0]에 jsonObj.motto을 삽입하는 배열 메서드 작동 확인
+  : 4. myMainTextArr 배열의 0번째 값이 들어가야하는 내용 jsonObj.motto 인거 확인
+  : 5. myMainTextArr[0]를 main bubble text div의 innerHTML에 재할당
+
+  --> 결과 
+  --> 내용이 바뀌긴 하는데 [object object]라는 text가 뜸
+
+  * [object object]란?
+  * json 데이터를 js 방식으로 변환 안한 값을 찍으면 나오는 값
+  
+  ? 왜 이런 결과가 나오는 걸까?
+  */ 
+  
+  
+  
 })
 
 
