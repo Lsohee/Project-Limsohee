@@ -1,31 +1,19 @@
-function textMyself2Func(leftValue,topValue){
-  let textMyself2Values = {
-    width :"fit-contant",
-    height: "fit-contant",
-    backgroundColor:"none",
-    position:"absolute",
-    left:leftValue,
-    top:topValue,
-    color:"black",
-    src: "none",
-    id:"textMyself2",
-  }
-  return textMyself2Values
-}
+import CreateDivValues from "../functions/createDivValues.js"
+import CreateMovingValues from "../functions/createMovingValues.js"
+import percentCalculator from "../functions/createPercentValues.js"
 
-function bottomMyself2Func(leftValue,topValue){
-  let bottomMyself2Values = {
-    width :"fit-contant",
-    height: "fit-contant",
-    backgroundColor:"none",
-    position:"absolute",
-    left:leftValue,
-    top:topValue,
-    color:"black",
-    src: "none",
-    id:"bottomMyself2",
-  }
-  return bottomMyself2Values
+const myself2TextArr = [
+  new CreateDivValues("200px", "fit-contant", "absolute", percentCalculator.left(30), percentCalculator.top(20), "10px", "black", "none", "myself2Text", 0),
+  new CreateMovingValues(45, 50, 45, 50, 0.3, 0.6, 0, 0.3), // pseudo page Meyself1 (나타남)
+  new CreateMovingValues(50, 65, 50, 60, 0.6, 1, 0.3, 1), // pseudo page Meyself1 (나타남)
+  new CreateMovingValues(65, 30, 60, 30, 1, 2) // pseudo page Meyself2 (나타남)
+]
 
-}
-export {textMyself2Func,bottomMyself2Func}
+const bottomArr = [
+  new CreateDivValues("1900px", "fit-contant", "absolute", percentCalculator.left(0), percentCalculator.top(0), "10px", "black", "img/대지 1 1.svg", "bottom", 0),
+  new CreateMovingValues(0, 0, 0, 0, 1, 1.1, 0, 0.2), // pseudo page Meyself1 (나타남)
+  new CreateMovingValues(0, 0, 0, 3, 1, 1.2, 0.2, 1), // pseudo page Meyself1 (나타남)
+  new CreateMovingValues(0, -40, 3, -35, 1.2, 2) // pseudo page Meyself2 (나타남)
+]
+
+export {myself2TextArr,bottomArr}

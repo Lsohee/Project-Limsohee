@@ -54,9 +54,6 @@ const interestsBubbleArr = [
 
 
 
-
-
-
 // --> 페이지 My mainBubbleText 값 배열
 const mainBubbleTextArr = [
   new CreateDivValues("300px", "fit-contant", "absolute", percentCalculator.left(20), percentCalculator.top(20), "10px", "black", "none", "mainBubbleText", 0),
