@@ -113,8 +113,8 @@ window.onload = function () {
 
 
     // pseudo fishes click event
-    fish1.addEventListener("click",()=>{changeArr(meMainTextArrTemp, jsonObj.happy,meMainText)})
-    fish2.addEventListener("click",()=>{changeArr(meMainTextArrTemp, jsonObj.need,meMainText)})
+    fish1.addEventListener("click",()=>{changeArr(meMainTextArrTemp, jsonObj.need,meMainText)})
+    fish2.addEventListener("click",()=>{changeArr(meMainTextArrTemp, jsonObj.happy,meMainText)})
     
     
     let currentPage = [true, false, false, false, false, false]
