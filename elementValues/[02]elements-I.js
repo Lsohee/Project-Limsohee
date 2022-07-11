@@ -13,7 +13,7 @@ const pageITextArr = [
 
 // --> 페이지 I leaf 값 배열
 const pageILeafArr = [
-  new CreateDivValues("300px", "300px", "absolute", percentCalculator.left(100), percentCalculator.top(30), "0px", "black", "img/leaf220706.svg", "pageILeaf"),
+  new CreateDivValues("300px", "300px", "absolute", percentCalculator.left(100), percentCalculator.top(30), "0px", "black", "img/leaf220607.svg", "pageILeaf"),
   new CreateMovingValues(100, 50, 20, 20, 1, 1),
   new CreateMovingValues(50, 30, 20, 20, 1, 2),
   new CreateMovingValues(30, 170, 20, 20, 2, 4)

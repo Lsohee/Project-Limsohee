@@ -10,7 +10,7 @@ const myself2TextArr = [
 ]
 
 const bottomArr = [
-  new CreateDivValues("1900px", "fit-contant", "absolute", percentCalculator.left(0), percentCalculator.top(0), "10px", "black", "img/대지 1 1.svg", "bottom", 0),
+  new CreateDivValues("1900px", "fit-contant", "absolute", percentCalculator.left(0), percentCalculator.top(0), "10px", "black", "img/대지1.svg", "bottom", 0),
   new CreateMovingValues(0, 0, 0, 0, 1, 1.1, 0, 0.2), // pseudo page Meyself1 (나타남)
   new CreateMovingValues(0, 0, 0, 3, 1, 1.2, 0.2, 1), // pseudo page Meyself1 (나타남)
   new CreateMovingValues(0, -40, 3, -35, 1.2, 2) // pseudo page Meyself2 (나타남)
